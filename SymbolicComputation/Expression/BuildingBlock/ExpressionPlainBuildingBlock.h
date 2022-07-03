@@ -1,16 +1,10 @@
 /**
  * @file ExpressionBuildingBlock.h
  * @author Phuong Diep Thanh (diepthanhphuong0407@gmail.com)
- * @brief This is the project to deploy symbolic computation
- * @brief This file copy file from Windows project available
+ * @brief Building block file from that we call all predefined data structure to process plain expression (in string form)
  * @version 2.0
- * @date 2022-06-29
+ * @date 2022-07-03
  * @copyright Copyright (c) 2022
- */
-
-/**
- * @brief This is the very primary files containing all the predefined custom data structures
- * @brief Root file with predefined custom data structures
  */
 
 #pragma once
@@ -30,17 +24,11 @@
 #include <unordered_set>
 #include <unordered_map>
 
-/**
- * @brief This custom data type will serve as a unit for expression unit
- * @brief More custom units will be add later
- */
+// Custom unit to build plain expression
 typedef std::vector<std::string> CustomTokenUnit;
 
-/**
- * @brief Built-in functions contains absolute value, logarithm, trigonometry functions, hyperbolic functions, square root
- * @brief More special functions will be add later
- */
-
+// Built-in functions contains absolute value, logarithm, trigonometry functions, hyperbolic functions, square root
+// More built-in functions will be add later
 std::unordered_set<std::string> BuiltInFunctions{
     "abs",
 
@@ -68,11 +56,7 @@ std::unordered_set<std::string> BuiltInFunctions{
     "sqrt",
 };
 
-/**
- * @brief Constant contains 40 important physical constants
- * @brief More constants will be added later
- */
-
+// Constant contains 40 important physical constants, more constants will be added later
 std::unordered_map<std::string, double> Constant = {
     {"pi", 3.1415926535897932384626433832795028841972},
     {"e", 2.7182818284590452353602874713526624977572},
