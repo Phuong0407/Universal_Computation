@@ -106,4 +106,9 @@ std::unordered_map<std::string, double> Constant = {
     {"CharImpVa", 376.7303135},
 };
 
+void VectorAssign(CustomTokenUnit &VectorToAssign, CustomTokenUnit GivenVector)
+{
+    for (unsigned int i = 0; i < GivenVector.size(); ++i)
+        VectorToAssign.push_back(VectorToAssign[i]);
+}
 #endif

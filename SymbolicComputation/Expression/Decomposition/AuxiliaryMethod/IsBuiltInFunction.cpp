@@ -38,5 +38,4 @@ namespace ExpressionManagement
         return false;
     }
 }
-
 #endif

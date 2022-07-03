@@ -58,9 +58,4 @@ namespace ExpressionManagement
             return false;
     }
 }
-
 #endif
-
-int main()
-{
-}
