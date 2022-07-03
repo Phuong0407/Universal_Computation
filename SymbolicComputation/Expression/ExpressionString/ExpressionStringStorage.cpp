@@ -1,25 +1,25 @@
 /**
- * @file ExpressionStringDecomposition.cpp is implementation file for ExpressionStringDecomposition.h
+ * @file ExpressionStringStorage.cpp
  * @author Phuong Diep Thanh (diepthanhphuong0407@gmail.com)
  * @version 2.0
  * @date 2022-06-29
  * @copyright Copyright (c) 2022
  */
 
-#include "ExpressionStringDecomposition.h"
+#ifndef EXPRESSION_STRING_STORAGE_CPP
+#define EXPRESSION_STRING_STORAGE_CPP
 
-/**
- * @brief ExpressionManagement namespace control all the operations related to expression exploitation
- */
+#include "ExpressionStringStorage.h"
+
 namespace ExpressionManagement
 {
     /**
      * @brief This is the only one API to process with others object
-     * @brief ExpressionStringDecompositionInitialization assigns expression for two class variables
+     * @brief ExpressionStringStorageInputAPI assigns expression for two class variables
      * @brief First, assign for two strings data, then remove space in second string, then removes unary operators
      * @param ExpressionInputString is the input from keyboard or other sources (develop later)
      */
-    void ExpressionStringDecomposition::ExpressionStringDecompositionInitialization(std::string ExpressionInputString)
+    void ExpressionStringStorage::ExpressionStringStorageInputAPI(std::string ExpressionInputString)
     {
         this->ExpressionInputInitial = ExpressionInputString;
         this->ExpressionInputNoBlank = ExpressionInputString;
@@ -35,7 +35,7 @@ namespace ExpressionManagement
      * @brief Where we remove special cases of unary operators like -3 + 4 or + 1 - 3
      * @brief We only insert 0, this will help build expression tree later by avoiding
      */
-    void ExpressionStringDecomposition::RemoveUnaryOperator()
+    void ExpressionStringStorage::RemoveUnaryOperator()
     {
         if (this->ExpressionInputNoBlank[0] == '+' || this->ExpressionInputNoBlank[0] == '-')
         {
@@ -49,13 +49,18 @@ namespace ExpressionManagement
                 this->ExpressionInputNoBlank.insert(i + 1, "0");
     }
 
-    std::string ExpressionStringDecomposition::OutputExpressionInitial()
+    std::string ExpressionStringStorage::OutputExpressionInitial()
     {
         return this->ExpressionInputInitial;
     }
 
-    std::string ExpressionStringDecomposition::OutputExpressionNoBlank()
+    std::string ExpressionStringStorage::OutputExpressionNoBlank()
     {
         return this->ExpressionInputNoBlank;
     }
+}
+#endif
+
+int main()
+{
 }
