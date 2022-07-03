@@ -33,6 +33,7 @@ namespace ExpressionManagement
         std::string OutputExpressionNoBlank();
         void ExpressionStringStorageInputAPI(std::string);
     };
+    typedef class ExpressionStringStorage ExpressionStringStorage;
 }
 
 #endif

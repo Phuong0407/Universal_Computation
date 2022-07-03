@@ -60,7 +60,3 @@ namespace ExpressionManagement
     }
 }
 #endif
-
-int main()
-{
-}
