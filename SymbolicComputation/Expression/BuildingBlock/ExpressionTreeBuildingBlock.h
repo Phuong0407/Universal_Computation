@@ -8,8 +8,8 @@
  */
 
 #pragma once
-#ifndef EXPRESSION_TREE_NODE_H
-#define EXPRESSION_TREE_NODE_H
+#ifndef EXPRESSION_TREE_BUILDING_BLOCK_H
+#define EXPRESSION_TREE_BUILDING_BLOCK_H
 
 #include <string>
 #include <cstring>
