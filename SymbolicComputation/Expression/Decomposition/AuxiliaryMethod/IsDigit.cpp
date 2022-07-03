@@ -9,7 +9,7 @@
 #ifndef IS_DIGIT_CPP
 #define IS_DIGIT_CPP
 
-#include "IsDigit.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 namespace ExpressionManagement
 {
     /**
@@ -35,3 +35,7 @@ namespace ExpressionManagement
     }
 }
 #endif
+
+int main()
+{
+}

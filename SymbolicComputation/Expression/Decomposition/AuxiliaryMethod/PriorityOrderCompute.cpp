@@ -6,11 +6,10 @@
  * @copyright Copyright (c) 2022
  */
 
-#pragma once
 #ifndef PRIORITY_ORDER_COMPUTE_CPP
 #define PRIORITY_ORDER_COMPUTE_CPP
 
-#include "PriorityOrderCompute.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 
 namespace ExpressionManagement
 {
@@ -52,3 +51,7 @@ namespace ExpressionManagement
 }
 
 #endif
+
+int main()
+{
+}

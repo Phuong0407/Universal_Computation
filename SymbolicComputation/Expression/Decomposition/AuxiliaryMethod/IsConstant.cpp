@@ -9,7 +9,7 @@
 #ifndef IS_CONSTANTS_CPP
 #define IS_CONSTANTS_CPP
 
-#include "IsConstant.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 
 namespace ExpressionManagement
 {
@@ -30,3 +30,7 @@ namespace ExpressionManagement
 }
 
 #endif
+
+int main()
+{
+}

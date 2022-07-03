@@ -9,8 +9,8 @@
 #ifndef IS_BUILT_IN_FUNCTION_CPP
 #define IS_BUILT_IN_FUNCTION_CPP
 
-#include "IsBuiltInFunction.h"
-#include "IsDigit.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
+#include "IsDigit.cpp"
 namespace ExpressionManagement
 {
     /**

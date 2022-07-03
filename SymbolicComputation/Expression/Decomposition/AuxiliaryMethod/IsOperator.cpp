@@ -6,11 +6,10 @@
  * @copyright Copyright (c) 2022
  */
 
-#pragma once
 #ifndef IS_OPERATOR_CPP
 #define IS_OPERATOR_CPP
 
-#include "IsOperator.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 namespace ExpressionManagement
 {
     /**
@@ -61,3 +60,7 @@ namespace ExpressionManagement
 }
 
 #endif
+
+int main()
+{
+}

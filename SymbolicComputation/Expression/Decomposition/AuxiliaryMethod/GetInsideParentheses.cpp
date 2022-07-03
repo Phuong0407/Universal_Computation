@@ -6,7 +6,9 @@
  * @copyright Copyright (c) 2022
  */
 
-#include "GetInsideParentheses.h"
+//#include "GetInsideParentheses.h"
+#include "IsBalance.cpp"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 
 #ifndef GET_INSIDE_PARENTHESES_CPP
 #define GET_INSIDE_PARENTHESES_CPP
@@ -62,7 +64,3 @@ namespace ExpressionManagement
     }
 }
 #endif
-
-int main()
-{
-}

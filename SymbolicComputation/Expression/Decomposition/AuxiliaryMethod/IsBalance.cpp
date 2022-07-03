@@ -9,7 +9,8 @@
 #ifndef IS_BALANCED_CPP
 #define IS_BALANCED_CPP
 
-#include "IsBalance.h"
+//#include "IsBalance.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 namespace ExpressionManagement
 {
     /**

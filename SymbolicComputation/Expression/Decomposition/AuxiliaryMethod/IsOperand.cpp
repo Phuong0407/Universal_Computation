@@ -9,7 +9,7 @@
 #ifndef IS_OPERAND_CPP
 #define IS_OPERAND_CPP
 
-#include "IsOperand.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 
 namespace ExpressionManagement
 {
@@ -33,5 +33,4 @@ namespace ExpressionManagement
             return false;
     }
 }
-
 #endif
