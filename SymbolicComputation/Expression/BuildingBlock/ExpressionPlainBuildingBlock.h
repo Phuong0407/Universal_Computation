@@ -1,5 +1,5 @@
 /**
- * @file ExpressionBuildingBlock.h
+ * @file ExpressionBuildingBlock.h is header file for plain expression structures
  * @author Phuong Diep Thanh (diepthanhphuong0407@gmail.com)
  * @brief Building block file from that we call all predefined data structure to process plain expression (in string form)
  * @version 2.0
