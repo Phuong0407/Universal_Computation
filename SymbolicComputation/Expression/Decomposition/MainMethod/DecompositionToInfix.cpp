@@ -27,10 +27,10 @@ namespace ExpressionManagement
      * @param InsideDecomposition to InsideParenthesesExpressionTokenUnit
      * @return CustomTokenUnit as a infix expression
      */
-    CustomTokenUnit DecompositionToInfixCustomToken(std::string Input)
+    CustomTokenUnit DecompositionToInfixCustomToken(std::string InputExpressionToDecompose)
     {
         CustomTokenUnit InfixDecomposition;
-        std::string ExpressionToDecompose = Input;
+        std::string ExpressionToDecompose = InputExpressionToDecompose;
         while (ExpressionToDecompose.length() >= 1)
         {
             if (ExpressionToDecompose.length() == 1)
