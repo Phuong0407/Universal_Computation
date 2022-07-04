@@ -49,5 +49,6 @@
         "utility": "cpp",
         "initializer_list": "cpp",
         "cinttypes": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

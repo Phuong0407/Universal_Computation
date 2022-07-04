@@ -5,6 +5,7 @@
  * @date 2022-07-03
  * @copyright Copyright (c) 2022
  */
+#pragma once
 #ifndef DECOMPOSITION_AUXILIARY_METHOD_API_CPP
 #define DECOMPOSITION_AUXILIARY_METHOD_API_CPP
 

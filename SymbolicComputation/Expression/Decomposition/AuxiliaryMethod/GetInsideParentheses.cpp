@@ -9,7 +9,7 @@
 //#include "GetInsideParentheses.h"
 #include "IsBalance.cpp"
 #include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
-
+#pragma once
 #ifndef GET_INSIDE_PARENTHESES_CPP
 #define GET_INSIDE_PARENTHESES_CPP
 namespace ExpressionManagement

@@ -5,7 +5,7 @@
  * @date 2022-07-03
  * @copyright Copyright (c) 2022
  */
-
+#pragma once
 #ifndef IS_CONSTANTS_CPP
 #define IS_CONSTANTS_CPP
 

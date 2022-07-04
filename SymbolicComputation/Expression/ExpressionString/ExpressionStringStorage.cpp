@@ -5,7 +5,7 @@
  * @date 2022-06-29
  * @copyright Copyright (c) 2022
  */
-
+#pragma once
 #ifndef EXPRESSION_STRING_STORAGE_CPP
 #define EXPRESSION_STRING_STORAGE_CPP
 

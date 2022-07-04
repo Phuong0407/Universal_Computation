@@ -5,7 +5,7 @@
  * @date 2022-07-03
  * @copyright Copyright (c) 2022
  */
-
+#pragma once
 #ifndef PRIORITY_ORDER_COMPUTE_CPP
 #define PRIORITY_ORDER_COMPUTE_CPP
 

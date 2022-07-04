@@ -1,9 +1,8 @@
 /**
- * @file ExpressionTreeBuildingBlock.h is header file for expression tree structures
+ * @file ExpressionTreeBuildingBlock.h
  * @author Phuong Diep Thanh (diepthanhphuong0407@gmail.com)
- * @brief Building block file from that we call all predefined data structure to process expression tree
  * @version 2.0
- * @date 2022-07-03
+ * @date 2022-07-04
  * @copyright Copyright (c) 2022
  */
 

@@ -1,3 +1,4 @@
+#pragma once
 #ifndef DECOMPOSITION_API_CPP
 #define DECOMPOSITION_API_CPP
 
