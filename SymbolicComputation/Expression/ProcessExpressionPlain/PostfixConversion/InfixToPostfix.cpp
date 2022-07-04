@@ -1,18 +1,27 @@
+/**
+ * @file InfixToPostfix.cpp
+ * @author Phuong Diep Thanh (diepthanhphuong0407@gmail.com)
+ * @version 2.0
+ * @date 2022-07-04
+ * @copyright Copyright (c) 2022
+ */
+#include "InfixToPostfix.h"
 
 namespace ExpressionManagement
 {
     /**
      * @brief InfixToPostfixConversion is used to convert a expression from infix to postfix
+     * @brief It will help to build expression tree later
      * @param ExpressionStack to PostfixConversionStack
      * @param StringScanner to ExpressionCustomTokenScanner
      * @param InsideParser to InsideParenthesesExpressionConversion
      * @param InsideExpression to InsideParenthesesExpressionCustomToken
      * @return CustomTokenUnit as postfix expression
      */
-    CustomTokenUnit Decomposition::InfixToPostfixConversion(CustomTokenUnit InfixCustomTokenUnitInput)
+    CustomTokenUnit InfixToPostfixConversion(CustomTokenUnit InfixCustomTokenUnitInput)
     {
         std::string ExpressionCustomTokenScanner = "";
-        CustomTokenUnit ExpressionInputToConvert = this->InfixDecompositionCustomToken;
+        CustomTokenUnit ExpressionInputToConvert = InfixCustomTokenUnitInput;
         CustomTokenUnit PostfixExpressionCustomToken;
         CustomTokenUnit InsideParenthesesExpressionCustomToken;
         CustomTokenUnit InsideParenthesesExpressionConversion;
@@ -74,7 +83,6 @@ namespace ExpressionManagement
         return PostfixExpressionCustomToken;
     }
 }
-
 /**
  * @brief We want to create a list of operands to create list of arguments of expression in computation class
  * @brief We do not need to check for invalid expression here because we will do in the expression computation class

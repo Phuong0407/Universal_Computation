@@ -16,5 +16,6 @@
 #include "IsConstant.cpp"
 #include "IsBuiltInFunction.cpp"
 #include "GetInsideParentheses.cpp"
+#include "PriorityOrderCompute.cpp"
 
 #endif

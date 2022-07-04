@@ -10,9 +10,10 @@
 #ifndef INFIX_TO_POSTFIX_CONVERSION_H
 #define INFIX_TO_POSTFIX_CONVERSION_H
 
-#include ""
-
-namespace ExpressionManagement{
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
+namespace ExpressionManagement
+{
+    CustomTokenUnit InfixToPostfixConversion(CustomTokenUnit);
 
 }
 
