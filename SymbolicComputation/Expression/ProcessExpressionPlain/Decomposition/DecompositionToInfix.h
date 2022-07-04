@@ -10,8 +10,6 @@
 #ifndef DECOMPOSITION_TO_INFIX_H
 #define DECOMPOSITION_TO_INFIX_H
 
-#include "../../ExpressionString/ExpressionStringStorage.h"
-#include "../../ExpressionString/ExpressionStringStorage.cpp"
 #include "../AuxiliaryMethod/DecompositionAuxiliaryMethodAPI.cpp"
 
 namespace ExpressionManagement

@@ -11,10 +11,10 @@
 #define INFIX_TO_POSTFIX_CONVERSION_H
 
 #include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
+#include "../AuxiliaryMethod/DecompositionAuxiliaryMethodAPI.cpp"
 namespace ExpressionManagement
 {
     CustomTokenUnit InfixToPostfixConversion(CustomTokenUnit);
-
 }
 
 #endif

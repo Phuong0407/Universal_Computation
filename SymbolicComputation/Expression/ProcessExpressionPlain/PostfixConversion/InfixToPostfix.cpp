@@ -11,6 +11,7 @@ namespace ExpressionManagement
 {
     /**
      * @brief InfixToPostfixConversion is used to convert a expression from infix to postfix
+     * @brief Using stack to build postfix expression in custom unit
      * @brief It will help to build expression tree later
      * @param ExpressionStack to PostfixConversionStack
      * @param StringScanner to ExpressionCustomTokenScanner
@@ -33,7 +34,6 @@ namespace ExpressionManagement
             if (IsBuiltInFunctions(ExpressionCustomTokenScanner) == true)
             {
                 InsideParenthesesExpressionCustomToken = GetInsideParentheses(ExpressionInputToConvert);
-                // remove the function
                 for (unsigned i = 0; i < InsideParenthesesExpressionCustomToken.size(); ++i)
                     ExpressionInputToConvert.erase(ExpressionInputToConvert.begin());
                 InsideParenthesesExpressionConversion = InfixToPostfixConversion(InsideParenthesesExpressionCustomToken);
@@ -88,20 +88,19 @@ namespace ExpressionManagement
  * @brief We do not need to check for invalid expression here because we will do in the expression computation class
  * @return CustomTokenUnit
  */
-void Decomposition::CreateOperandsList()
-{
-    std::vector<std::string> PostfixCustomTokenUnitToScan = this->OutputPostfixDecompositionCustomToken();
-    for (unsigned int i = 0; i < PostfixCustomTokenUnitToScan.size(); ++i)
-    {
-        if (IsDigit(PostfixCustomTokenUnitToScan[i]) == true)
-            continue;
-        else if (IsBuiltInFunctions(PostfixCustomTokenUnitToScan[i]) == true)
-            continue;
-        else if (IsOperator(PostfixCustomTokenUnitToScan[i]) == true)
-            continue;
-        else if (PostfixCustomTokenUnitToScan[i] == "(" || PostfixCustomTokenUnitToScan[i] == ")")
-            continue;
-        else
-            this->OperandsList.push_back(PostfixCustomTokenUnitToScan[i]);
-    }
-}
+// void CreateOperandsList()
+// {
+//     std::vector<std::string> PostfixCustomTokenUnitToScan;
+//     for (unsigned int i = 0; i < PostfixCustomTokenUnitToScan.size(); ++i)
+//     {
+//         if (IsDigit(PostfixCustomTokenUnitToScan[i]) == true)
+//             continue;
+//         else if (IsBuiltInFunctions(PostfixCustomTokenUnitToScan[i]) == true)
+//             continue;
+//         else if (IsOperator(PostfixCustomTokenUnitToScan[i]) == true)
+//             continue;
+//         else if (PostfixCustomTokenUnitToScan[i] == "(" || PostfixCustomTokenUnitToScan[i] == ")")
+//             continue;
+//         else
+//             this->OperandsList.push_back(PostfixCustomTokenUnitToScan[i]);
+//     }
