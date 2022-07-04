@@ -16,26 +16,6 @@
 
 namespace ExpressionManagement
 {
-    /**
-     * @brief Decomposition is class to decompose string expression to CustomTokenUnit
-     * @brief We give two output API, one input API and decompose expression to infix expression
-     */
-    class DecompositionToInfix : public ExpressionStringStorage
-    {
-    private:
-        // std::vector<std::string> OperandsList;
-
-        CustomTokenUnit DecompositionToInfixCustomToken(std::string);
-        // CustomTokenUnit InfixToPostfixConversion(CustomTokenUnit);
-        // void CreateOperandsList();
-
-    protected:
-    public:
-        CustomTokenUnit InfixExpressionCustomToken;
-        void DecompositionToInfixInputAPI(std::string);
-        CustomTokenUnit DecompositionToInfixOutputAPI();
-        // std::vector<std::string> OutputOperandsList();
-    };
-    typedef class DecompositionToInfix DecompositionToInfix;
+    CustomTokenUnit DecompositionToInfixCustomToken(std::string);
 }
 #endif

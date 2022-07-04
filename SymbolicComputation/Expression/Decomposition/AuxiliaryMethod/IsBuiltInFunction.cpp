@@ -11,6 +11,7 @@
 
 #include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 #include "IsDigit.cpp"
+
 namespace ExpressionManagement
 {
     /**
@@ -22,20 +23,22 @@ namespace ExpressionManagement
      */
     bool IsBuiltInFunctions(std::string InputCheckingString)
     {
-        std::string CheckingRootFunctionNotation = "";
-        std::string CheckingRootFunctionOrder = "";
         if (BuiltInFunctions.find(InputCheckingString) != BuiltInFunctions.end())
             return true;
-
         // We check for root function with order different from 2, for example sqrt3(2) is cube root of 2
         else if (InputCheckingString.length() >= 5)
         {
-            CheckingRootFunctionNotation = InputCheckingString.substr(InputCheckingString[0], InputCheckingString[3]);
-            CheckingRootFunctionOrder = InputCheckingString.substr(InputCheckingString[4], InputCheckingString.length());
+            std::string CheckingRootFunctionNotation = "";
+            std::string CheckingRootFunctionOrder = "";
+            CheckingRootFunctionNotation = InputCheckingString.substr(0, 4);
+            CheckingRootFunctionOrder = InputCheckingString.substr(4, InputCheckingString.length());
             if (IsDigit(CheckingRootFunctionOrder) == true && CheckingRootFunctionNotation == "sqrt")
                 return true;
+            else
+                return false;
         }
-        return false;
+        else
+            return false;
     }
 }
 #endif
