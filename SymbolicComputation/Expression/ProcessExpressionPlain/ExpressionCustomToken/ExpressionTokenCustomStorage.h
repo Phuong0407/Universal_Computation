@@ -10,6 +10,8 @@
 #ifndef EXPRESSION_TOKEN_CUSTOM_STORAGE_H
 #define EXPRESSION_TOKEN_CUSTOM_STORAGE_H
 
+#include "../Decomposition/DecompositionAPI.cpp"
+#include "../PostfixConversion/InfixToPostfixAPI.cpp"
 #include "../ExpressionString/ExpressionStringStorage.h"
 #include "../ExpressionString/ExpressionStringStorage.cpp"
 
@@ -22,9 +24,8 @@ namespace ExpressionManagement
         CustomTokenUnit ExpressionCustomTokenPostfix;
 
     protected:
-        void ExpressionCustomTokenInputAPI(std::string);
-
     public:
+        void ExpressionCustomTokenInputAPI(std::string);
         CustomTokenUnit OutputExpressionCustomTokenInfix();
         CustomTokenUnit OutputExpressionCustomTokenPostfix();
     };

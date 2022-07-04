@@ -19,6 +19,16 @@ namespace ExpressionManagement
     {
         this->ExpressionStringStorageInputAPI(ExpressionStringInput);
         this->ExpressionCustomTokenInfix = DecompositionToInfixCustomToken(this->OutputExpressionNoBlank());
+        this->ExpressionCustomTokenPostfix = InfixToPostfixConversion(this->OutputExpressionCustomTokenInfix());
+    }
+
+    CustomTokenUnit ExpressionTokenCustomStorage::OutputExpressionCustomTokenInfix()
+    {
+        return this->ExpressionCustomTokenInfix;
+    }
+    CustomTokenUnit ExpressionTokenCustomStorage::OutputExpressionCustomTokenPostfix()
+    {
+        return this->ExpressionCustomTokenPostfix;
     }
 }
 

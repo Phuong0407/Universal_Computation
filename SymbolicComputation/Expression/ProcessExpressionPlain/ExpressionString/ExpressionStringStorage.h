@@ -10,7 +10,7 @@
 #ifndef EXPRESSION_STRING_STORAGE_H
 #define EXPRESSION_STRING_STORAGE_H
 
-#include "../BuildingBlock/ExpressionPlainBuildingBlock.h"
+#include "../../BuildingBlock/ExpressionPlainBuildingBlock.h"
 
 // ExpressionManagement namespace control all the operations related to expression exploitation
 namespace ExpressionManagement
