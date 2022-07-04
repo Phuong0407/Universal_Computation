@@ -22,7 +22,6 @@ namespace ExpressionManagement
     void ExpressionStringStorage::ExpressionStringStorageInputAPI(std::string ExpressionInputString)
     {
         this->ExpressionInputInitial = ExpressionInputString;
-
         do
         {
             ExpressionInputString.erase(remove(ExpressionInputString.begin(), ExpressionInputString.end(), ' '), ExpressionInputString.end());

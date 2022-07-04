@@ -29,8 +29,9 @@ namespace ExpressionManagement
         void RemoveUnaryOperator();
 
     protected:
-    public:
         void ExpressionStringStorageInputAPI(std::string);
+
+    public:
         std::string OutputExpressionInitial();
         std::string OutputExpressionNoBlank();
     };
