@@ -24,7 +24,6 @@ namespace ExpressionManagement
     {
     private:
         // std::vector<std::string> OperandsList;
-        CustomTokenUnit InfixExpressionCustomToken;
 
         CustomTokenUnit DecompositionToInfixCustomToken(std::string);
         // CustomTokenUnit InfixToPostfixConversion(CustomTokenUnit);
@@ -32,6 +31,7 @@ namespace ExpressionManagement
 
     protected:
     public:
+        CustomTokenUnit InfixExpressionCustomToken;
         void DecompositionToInfixInputAPI(std::string);
         CustomTokenUnit DecompositionToInfixOutputAPI();
         // std::vector<std::string> OutputOperandsList();

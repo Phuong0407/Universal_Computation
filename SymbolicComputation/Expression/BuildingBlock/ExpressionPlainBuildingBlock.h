@@ -14,15 +14,18 @@
 #include <cmath>
 #include <tuple>
 #include <stack>
+#include <locale>
 #include <vector>
 #include <string>
-#include <cstring>
+#include <cctype>
 #include <ctype.h>
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
+#include <functional>
 #include <unordered_set>
 #include <unordered_map>
+#include <iostream>
 
 // Custom unit to build plain expression
 typedef std::vector<std::string> CustomTokenUnit;

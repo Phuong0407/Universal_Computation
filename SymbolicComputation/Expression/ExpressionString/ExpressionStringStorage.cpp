@@ -22,11 +22,12 @@ namespace ExpressionManagement
     void ExpressionStringStorage::ExpressionStringStorageInputAPI(std::string ExpressionInputString)
     {
         this->ExpressionInputInitial = ExpressionInputString;
-        this->ExpressionInputNoBlank = ExpressionInputString;
+
         do
         {
-            this->ExpressionInputNoBlank.erase(remove(this->ExpressionInputNoBlank.begin(), this->ExpressionInputNoBlank.end(), ' '), this->ExpressionInputNoBlank.end());
-        } while (this->ExpressionInputNoBlank.find(' ') == this->ExpressionInputNoBlank.length());
+            ExpressionInputString.erase(remove(ExpressionInputString.begin(), ExpressionInputString.end(), ' '), ExpressionInputString.end());
+        } while (ExpressionInputString.find(' ') == ExpressionInputString.length());
+        this->ExpressionInputNoBlank = ExpressionInputString;
         this->RemoveUnaryOperator();
     }
 

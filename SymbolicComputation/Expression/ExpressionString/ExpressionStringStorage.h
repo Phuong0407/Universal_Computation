@@ -23,15 +23,14 @@ namespace ExpressionManagement
     class ExpressionStringStorage
     {
     private:
-        std::string ExpressionInputInitial = "";
-        std::string ExpressionInputNoBlank = "";
+        std::string ExpressionInputInitial;
+        std::string ExpressionInputNoBlank;
 
         void RemoveUnaryOperator();
 
     protected:
-        void ExpressionStringStorageInputAPI(std::string);
-
     public:
+        void ExpressionStringStorageInputAPI(std::string);
         std::string OutputExpressionInitial();
         std::string OutputExpressionNoBlank();
     };
