@@ -28,4 +28,6 @@ Universal_Computation
 				|---TokenCustomObject.h
 				|---TreeObject.h
 			|---ValueComputation
+				|---ValueComputation.h
+				|---ValueComputation.cpp
 		|---Integral

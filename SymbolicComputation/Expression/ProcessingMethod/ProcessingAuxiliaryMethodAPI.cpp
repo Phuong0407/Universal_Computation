@@ -18,5 +18,7 @@
 #include "IsBalance.cpp"
 #include "GetInsideParentheses.cpp"
 #include "PriorityOrderCompute.cpp"
+#include "IsValidExpression.cpp"
+#include "GetArgumentName.cpp"
 
 #endif

@@ -25,7 +25,7 @@ namespace ExpressionManagement
         void OutputExpressionTreePreOrderTraversal();
         void OutputExpressionTreePostOrderTraversal();
     };
-    typedef class ExpressionTreeStorage ExpressionTreeStorage;
+    typedef class ExpressionTreeObject ExpressionTreeObject;
 
     void ExpressionTreeObject::TreeExpressionStorageInputAPI(std::string ExpressionInput)
     {
