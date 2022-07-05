@@ -11,36 +11,24 @@
 #ifndef EXPRESSION_TREE_CONSTRUCTION_CPP
 #define EXPRESSION_TREE_CONSTRUCTION_CPP
 
-#include "ExpressionTreeConstruction.h"
+#include <stack>
+#include "../BuildingBlock/ExpressionPlainBuildingBlock.h"
+#include "../BuildingBlock/ExpressionTreeBuildingBlock.h"
 
-/**
- * @brief ExpressionManagement namespace control all the operations related to expression exploitation
- */
 namespace ExpressionManagement
 {
-    /**
-     * @brief This is the method to initialize the expression tree
-     * @brief This is the only API to communicate with other objects
-     * @param InputExpressionString is the expression to build tree
-     */
-    void TreeExpressionConstruction::ExpressionTreeInitialization(std::string InputExpressionString)
-    {
-        this->DecompositionToInfixCustomTokenInitialization(InputExpressionString);
-        this->ExpressionTreeRoot = this->BuildExpressionTree(this->OutputPostfixDecompositionCustomToken());
-    }
-
     /**
      * @brief BuildExpressionTree recursively build expression tree from postfix expression
      * @brief Inherited all data from ExpressionCustomTokenDecomposition class
      * @brief We use stack to build, so we need to track for exception
      */
-    TreeExpressionBuildingBlock *TreeExpressionConstruction::BuildExpressionTree(CustomTokenUnit PostfixExpressionCustomTokenUnit)
+    TreeExpressionBuildingBlock *BuildExpressionTree(CustomTokenUnit PostfixExpressionCustomTokenUnit)
     {
         std::stack<TreeExpressionBuildingBlock *> ExpressionTreeStack;
         TreeExpressionBuildingBlock *ExpressionTreeRoot = new TreeExpressionBuildingBlock;
         TreeExpressionBuildingBlock *LeftSubTreeExpression = new TreeExpressionBuildingBlock;
         TreeExpressionBuildingBlock *RightSubTreeExpression = new TreeExpressionBuildingBlock;
-        CustomTokenUnit PostfixExpressionBuildingUnit = this->OutputPostfixDecompositionCustomToken();
+        CustomTokenUnit PostfixExpressionBuildingUnit = PostfixExpressionCustomTokenUnit;
         for (unsigned int i = 0; i < PostfixExpressionBuildingUnit.size(); ++i)
         {
 
@@ -74,11 +62,6 @@ namespace ExpressionManagement
         if (ExpressionTreeStack.empty() == false)
             throw std::invalid_argument("Stack is not empty after building expression tree, wrong algorithms, please check the file ExpressionTreeConstruction.cpp.");
         return ExpressionTreeRoot;
-    }
-
-    TreeExpressionBuildingBlock *TreeExpressionConstruction::OutputExpressionTree()
-    {
-        return this->ExpressionTreeRoot;
     }
 }
 #endif

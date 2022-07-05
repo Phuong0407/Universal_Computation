@@ -1,0 +1,21 @@
+/**
+ * @brief We want to create a list of operands to create list of arguments of expression in computation class
+ * @brief We do not need to check for invalid expression here because we will do in the expression computation class
+ * @return CustomTokenUnit
+ */
+// void CreateOperandsList()
+// {
+//     std::vector<std::string> PostfixCustomTokenUnitToScan;
+//     for (unsigned int i = 0; i < PostfixCustomTokenUnitToScan.size(); ++i)
+//     {
+//         if (IsDigit(PostfixCustomTokenUnitToScan[i]) == true)
+//             continue;
+//         else if (IsBuiltInFunctions(PostfixCustomTokenUnitToScan[i]) == true)
+//             continue;
+//         else if (IsOperator(PostfixCustomTokenUnitToScan[i]) == true)
+//             continue;
+//         else if (PostfixCustomTokenUnitToScan[i] == "(" || PostfixCustomTokenUnitToScan[i] == ")")
+//             continue;
+//         else
+//             this->OperandsList.push_back(PostfixCustomTokenUnitToScan[i]);
+//     }
