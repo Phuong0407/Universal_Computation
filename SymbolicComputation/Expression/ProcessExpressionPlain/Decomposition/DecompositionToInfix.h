@@ -10,7 +10,7 @@
 #ifndef DECOMPOSITION_TO_INFIX_H
 #define DECOMPOSITION_TO_INFIX_H
 
-#include "../AuxiliaryMethod/DecompositionAuxiliaryMethodAPI.cpp"
+#include "../../ProcessExpressionPlain/AuxiliaryMethod/DecompositionAuxiliaryMethodAPI.cpp"
 
 namespace ExpressionManagement
 {

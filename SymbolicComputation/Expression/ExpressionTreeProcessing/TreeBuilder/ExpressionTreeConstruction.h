@@ -11,8 +11,8 @@
 #ifndef EXPRESSION_TREE_CONSTRUCTION_H
 #define EXPRESSION_TREE_CONSTRUCTION_H
 
-#include "ExpressionTreeBuildingBlock.h"
-#include "ExpressionCustomTokenDecomposition.h"
+#include "../../BuildingBlock/ExpressionTreeBuildingBlock.h"
+#include "../../ProcessExpressionPlain/ExpressionCustomToken/ExpressionTokenCustomStorage.cpp"
 
 /**
  * @brief ExpressionManagement namespace control all the operations related to expression exploitation
@@ -26,22 +26,10 @@ namespace ExpressionManagement
      * @brief Derives from class ExpressionCustomTokenDecomposition
      * @brief Can be developed in future
      */
-    class TreeExpressionConstruction : public ExpressionCustomTokenDecomposition
-    {
-    private:
-        TreeExpressionBuildingBlock *ExpressionTreeRoot = new TreeExpressionBuildingBlock;
-
-        TreeExpressionBuildingBlock *BuildExpressionTree(CustomTokenUnit);
-
-    protected:
-        void ExpressionTreeInitialization(std::string);
-
-    public:
-        TreeExpressionBuildingBlock *OutputExpressionTree();
-        // void InOrderTraversalExpressionTree();
-        // void PreOrderTraversalExpressionTree();
-        // void PostOrderTraversalExpressionTree();
-    };
+    TreeExpressionBuildingBlock *BuildExpressionTree(CustomTokenUnit);
 }
-
 #endif
+
+int main()
+{
+}

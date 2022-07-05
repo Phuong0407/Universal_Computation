@@ -30,8 +30,6 @@ namespace ExpressionManagement
 
     protected:
         void ExpressionStringStorageInputAPI(std::string);
-
-    public:
         std::string OutputExpressionInitial();
         std::string OutputExpressionNoBlank();
     };

@@ -23,18 +23,18 @@ namespace ExpressionManagement
      * @brief This is the only API to communicate with other objects
      * @param InputExpressionString is the expression to build tree
      */
-    void TreeExpressionConstruction::ExpressionTreeInitialization(std::string InputExpressionString)
-    {
-        this->DecompositionToInfixCustomTokenInitialization(InputExpressionString);
-        this->ExpressionTreeRoot = this->BuildExpressionTree(this->OutputPostfixDecompositionCustomToken());
-    }
+    // void TreeExpressionConstruction::ExpressionTreeInitialization(std::string InputExpressionString)
+    // {
+    //     this->DecompositionToInfixCustomTokenInitialization(InputExpressionString);
+    //     this->ExpressionTreeRoot = this->BuildExpressionTree(this->OutputPostfixDecompositionCustomToken());
+    // }
 
     /**
      * @brief BuildExpressionTree recursively build expression tree from postfix expression
      * @brief Inherited all data from ExpressionCustomTokenDecomposition class
      * @brief We use stack to build, so we need to track for exception
      */
-    TreeExpressionBuildingBlock *TreeExpressionConstruction::BuildExpressionTree(CustomTokenUnit PostfixExpressionCustomTokenUnit)
+    TreeExpressionBuildingBlock *BuildExpressionTree(CustomTokenUnit PostfixExpressionCustomTokenUnit)
     {
         std::stack<TreeExpressionBuildingBlock *> ExpressionTreeStack;
         TreeExpressionBuildingBlock *ExpressionTreeRoot = new TreeExpressionBuildingBlock;
@@ -76,9 +76,9 @@ namespace ExpressionManagement
         return ExpressionTreeRoot;
     }
 
-    TreeExpressionBuildingBlock *TreeExpressionConstruction::OutputExpressionTree()
-    {
-        return this->ExpressionTreeRoot;
-    }
+    // TreeExpressionBuildingBlock *TreeExpressionConstruction::OutputExpressionTree()
+    // {
+    //     return this->ExpressionTreeRoot;
+    // }
 }
 #endif

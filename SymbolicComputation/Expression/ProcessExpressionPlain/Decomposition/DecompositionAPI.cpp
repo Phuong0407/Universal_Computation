@@ -5,3 +5,7 @@
 #include "DecompositionToInfix.cpp"
 
 #endif
+
+int main()
+{
+}

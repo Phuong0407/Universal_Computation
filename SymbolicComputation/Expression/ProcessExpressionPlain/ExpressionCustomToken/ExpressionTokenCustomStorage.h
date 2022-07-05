@@ -24,7 +24,6 @@ namespace ExpressionManagement
         CustomTokenUnit ExpressionCustomTokenPostfix;
 
     protected:
-    public:
         void ExpressionCustomTokenInputAPI(std::string);
         CustomTokenUnit OutputExpressionCustomTokenInfix();
         CustomTokenUnit OutputExpressionCustomTokenPostfix();
