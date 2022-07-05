@@ -23,7 +23,7 @@ Universal_Computation
 				|---DecompositionToInfix.cpp
 				|---ExpressionTreeConstruction.cpp
 				|---DecompositionAuxiliaryMethodAPI.cpp
-           		|---ExpressionObject
+			|---ExpressionObject
 				|---StringObject.h
 				|---TokenCustomObject.h
 				|---TreeObject.h
