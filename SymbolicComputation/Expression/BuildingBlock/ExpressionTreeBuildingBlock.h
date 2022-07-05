@@ -74,22 +74,28 @@ bool CheckIfKeyExistence(TreeExpressionBuildingBlock *Root, std::string KeyToFin
 
 void InOrderTraversal(TreeExpressionBuildingBlock *Root)
 {
-    InOrderTraversal(Root->Left);
+    if (Root->Left != NULL)
+        InOrderTraversal(Root->Left);
     std::cout << Root->Data << std::endl;
-    InOrderTraversal(Root->Right);
+    if (Root->Right != NULL)
+        InOrderTraversal(Root->Right);
 }
 
 void PreOrderTraversal(TreeExpressionBuildingBlock *Root)
 {
     std::cout << Root->Data << std::endl;
-    PreOrderTraversal(Root->Left);
-    PreOrderTraversal(Root->Right);
+    if (Root->Left != NULL)
+        PreOrderTraversal(Root->Left);
+    if (Root->Right != NULL)
+        PreOrderTraversal(Root->Right);
 }
 
 void PostOrderTraversal(TreeExpressionBuildingBlock *Root)
 {
-    PostOrderTraversal(Root->Left);
-    PostOrderTraversal(Root->Right);
+    if (Root->Left != NULL)
+        PostOrderTraversal(Root->Left);
+    if (Root->Right != NULL)
+        PostOrderTraversal(Root->Right);
     std::cout << Root->Data << std::endl;
 }
 

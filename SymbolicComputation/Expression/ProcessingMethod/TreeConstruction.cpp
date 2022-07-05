@@ -28,7 +28,7 @@ namespace ExpressionManagement
         TreeExpressionBuildingBlock *ExpressionTreeRoot = new TreeExpressionBuildingBlock;
         TreeExpressionBuildingBlock *LeftSubTreeExpression = new TreeExpressionBuildingBlock;
         TreeExpressionBuildingBlock *RightSubTreeExpression = new TreeExpressionBuildingBlock;
-        CustomTokenUnit PostfixExpressionBuildingUnit = this->OutputPostfixDecompositionCustomToken();
+        CustomTokenUnit PostfixExpressionBuildingUnit = PostfixExpressionCustomTokenUnit;
         for (unsigned int i = 0; i < PostfixExpressionBuildingUnit.size(); ++i)
         {
 

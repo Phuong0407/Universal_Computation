@@ -7,8 +7,8 @@
  */
 
 #pragma once
-#ifndef PROCESS_METHOD_METHOD_API_CPP
-#define PROCESS_METHOD_METHOD_API_CPP
+#ifndef PROCESS_MAIN_METHOD_METHOD_API_CPP
+#define PROCESS_MAIN_METHOD_METHOD_API_CPP
 
 // include in this order, please do not change!
 #include "DecompositionToInfix.cpp"
