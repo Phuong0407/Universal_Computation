@@ -34,11 +34,3 @@ namespace ExpressionManagement
     }
 }
 #endif
-
-// using namespace std;
-// using namespace ExpressionManagement;
-// int main()
-// {
-//     if (IsOperand('1') == true)
-//         cout << "true";
-// }

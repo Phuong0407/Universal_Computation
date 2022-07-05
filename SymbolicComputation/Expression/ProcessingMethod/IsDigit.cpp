@@ -39,11 +39,3 @@ namespace ExpressionManagement
     }
 }
 #endif
-
-// using namespace std;
-// using namespace ExpressionManagement;
-// int main()
-// {
-//     if (IsDigit("11.232232213") == true)
-//         cout << "true";
-// }

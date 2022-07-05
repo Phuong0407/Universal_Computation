@@ -59,13 +59,3 @@ namespace ExpressionManagement
     }
 }
 #endif
-
-// using namespace std;
-// using namespace ExpressionManagement;
-// int main()
-// {
-//     if (IsOperator("/") == true)
-//         cout << "true";
-//     if (IsOperator('^') == true)
-//         cout << "true";
-// }
