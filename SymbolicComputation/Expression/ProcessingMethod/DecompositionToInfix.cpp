@@ -30,8 +30,14 @@ namespace ExpressionManagement
      */
     CustomTokenUnit DecompositionToInfixCustomToken(std::string InputExpressionToDecompose)
     {
-        CustomTokenUnit InfixDecomposition;
+        char ExpressionScanner;
         std::string ExpressionToDecompose = InputExpressionToDecompose;
+        std::string ExpressionUnitBuilder = "";
+        std::string InsideParenthesesExpression = "";
+        std::string CustomTokenUnitExpressionScanner = "";
+        CustomTokenUnit InfixDecomposition;
+        CustomTokenUnit SubExpressionDecomposition;
+        CustomTokenUnit InsideParenthesesExpressionTokenUnit;
         while (ExpressionToDecompose.length() >= 1)
         {
             if (ExpressionToDecompose.length() == 1)
@@ -42,20 +48,20 @@ namespace ExpressionManagement
             }
             else
             {
-                char ExpressionScanner = ExpressionToDecompose[0];
+                ExpressionScanner = ExpressionToDecompose[0];
                 if (IsOperator(ExpressionScanner) == true)
                 {
-                    std::string ExpressionUnitBuilder = "";
+                    ExpressionUnitBuilder = "";
                     ExpressionUnitBuilder += ExpressionScanner;
                     InfixDecomposition.push_back(ExpressionUnitBuilder);
                     ExpressionToDecompose = ExpressionToDecompose.substr(1, ExpressionToDecompose.length());
-                    CustomTokenUnit SubExpressionDecomposition = DecompositionToInfixCustomToken(ExpressionToDecompose);
+                    SubExpressionDecomposition = DecompositionToInfixCustomToken(ExpressionToDecompose);
                     InfixDecomposition.insert(InfixDecomposition.end(), SubExpressionDecomposition.begin(), SubExpressionDecomposition.end());
                     ExpressionToDecompose = "";
                 }
                 else if (IsOperand(ExpressionScanner) == true)
                 {
-                    std::string CustomTokenUnitExpressionScanner = "";
+                    CustomTokenUnitExpressionScanner = "";
                     while (IsOperand(ExpressionScanner) == true)
                     {
                         CustomTokenUnitExpressionScanner += ExpressionScanner;
@@ -65,8 +71,8 @@ namespace ExpressionManagement
                     if (IsBuiltInFunctions(CustomTokenUnitExpressionScanner) == true)
                     {
                         InfixDecomposition.push_back(CustomTokenUnitExpressionScanner);
-                        std::string InsideParenthesesExpression = GetInsideParentheses(ExpressionToDecompose);
-                        CustomTokenUnit InsideParenthesesExpressionTokenUnit = DecompositionToInfixCustomToken(InsideParenthesesExpression);
+                        InsideParenthesesExpression = GetInsideParentheses(ExpressionToDecompose);
+                        InsideParenthesesExpressionTokenUnit = DecompositionToInfixCustomToken(InsideParenthesesExpression);
                         InfixDecomposition.insert(InfixDecomposition.end(), InsideParenthesesExpressionTokenUnit.begin(), InsideParenthesesExpressionTokenUnit.end());
                         if (InsideParenthesesExpression.length() == ExpressionToDecompose.length())
                             ExpressionToDecompose = "";
@@ -75,17 +81,17 @@ namespace ExpressionManagement
                     }
                     else
                         InfixDecomposition.push_back(CustomTokenUnitExpressionScanner);
-                    CustomTokenUnit SubExpressionDecomposition = DecompositionToInfixCustomToken(ExpressionToDecompose);
+                    SubExpressionDecomposition = DecompositionToInfixCustomToken(ExpressionToDecompose);
                     InfixDecomposition.insert(InfixDecomposition.end(), SubExpressionDecomposition.begin(), SubExpressionDecomposition.end());
                     ExpressionToDecompose = "";
                 }
                 else if (ExpressionScanner == '(' || ExpressionScanner == ')')
                 {
-                    std::string ExpressionUnitBuilder = "";
+                    ExpressionUnitBuilder = "";
                     ExpressionUnitBuilder += ExpressionScanner;
                     InfixDecomposition.push_back(ExpressionUnitBuilder);
                     ExpressionToDecompose = ExpressionToDecompose.substr(1, ExpressionToDecompose.length());
-                    CustomTokenUnit SubExpressionDecomposition = DecompositionToInfixCustomToken(ExpressionToDecompose);
+                    SubExpressionDecomposition = DecompositionToInfixCustomToken(ExpressionToDecompose);
                     InfixDecomposition.insert(InfixDecomposition.end(), SubExpressionDecomposition.begin(), SubExpressionDecomposition.end());
                     ExpressionToDecompose = "";
                 }
