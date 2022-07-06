@@ -1,47 +1,20 @@
 /**
- * @file ExpressionTreeComputationAuxiliaryMethod.cpp
- * @file is the implementation file of ExpressionTreeComputationAuxiliaryMethod.h
+ * @file ComputeBuiltInFunction.cpp
  * @author Phuong Diep Thanh (diepthanhphuong0407@gmail.com)
  * @version 2.0
- * @date 2022-07-01
+ * @date 2022-07-06
  * @copyright Copyright (c) 2022
  */
-
 #pragma once
-#ifndef EXPRESSION_TREE_COMPUTATION_AUXILIARY_METHOD_CPP
-#define EXPRESSION_TREE_COMPUTATION_AUXILIARY_METHOD_CPP
+#ifndef COMPUTE_BUILT_IN_FUNCTION_CPP
+#define COMPUTE_BUILT_IN_FUNCTION_CPP
 
-#include "ExpressionTreeComputationAuxiliaryMethod.h"
+#include "IsBuiltInFunction.cpp"
 
-/**
- * @brief ExpressionManagement namespace control all the operations related to expression exploitation
- */
 namespace ExpressionManagement
 {
     /**
-     * @brief NumberStringToDouble method transforms a number as a string to double value
-     * @brief This method exists because we treat double number like 1.5 as a string which we store as CustomTokenUnit
-     * @brief To use this method, we need to check whether the entity is an operand
-     * @brief refers to ExpressionCustomTokenDecompositionAuxiliaryMethod for more informations
-     * @param InputStringToNumber is the number to transform
-     * @return double
-     */
-    double NumberStringToDouble(std::string InputStringToNumber)
-    {
-        double DoubleNumberBuilder = 0.0;
-        double DigitPositionInNumber = 0.0;
-        for (unsigned int i = 0; i < InputStringToNumber.length(); i++)
-        {
-            if (isdigit(InputStringToNumber[i]) == true)
-                DoubleNumberBuilder = DoubleNumberBuilder * 10.0 + static_cast<double>(InputStringToNumber[i] - '0');
-            else
-                DigitPositionInNumber = static_cast<double>(InputStringToNumber.length()) - 1.0 - static_cast<double>(i);
-        }
-        return DoubleNumberBuilder / pow(10.0, static_cast<double>(DigitPositionInNumber));
-    }
-
-    /**
-     * @brief BuiltInFunctionsComputation is the method to calculate a function value at some variable values
+     * @brief ComputeBuiltInFunction is the method to calculate a function value at some variable values
      * @brief We simply show all the built-in functions calculation, with the divide-conquer strategy
      * @brief We add exception handling for some special cases of undermined, such as divided by 0
      * @param VariableValue is the variable value that we want to compute
@@ -51,7 +24,9 @@ namespace ExpressionManagement
     double BuiltInFunctionsComputation(double VariableValue, std::string BuiltInFunction)
     {
         double FunctionValueComputation = 0.0;
-        if (BuiltInFunction == "abs")
+        if (IsBuiltInFunctions(BuiltInFunction) == false)
+            throw std::runtime_error("Invalid expression!");
+        else if (BuiltInFunction == "abs")
             FunctionValueComputation = abs(VariableValue);
         else if (BuiltInFunction == "log")
         {
@@ -132,8 +107,21 @@ namespace ExpressionManagement
                 throw std::invalid_argument("Out of bound for square root!");
             FunctionValueComputation = sqrt(VariableValue);
         }
+        else if (BuiltInFunction.length() >= 5)
+        {
+            std::string CheckingRootFunctionOrder = BuiltInFunction.substr(4, BuiltInFunction.length());
+            double RootOrder = std::stod(CheckingRootFunctionOrder);
+            if (VariableValue == 0)
+            {
+                if (RootOrder < 0)
+                    throw std::invalid_argument("Root with negative-order of zero!");
+                else
+                    return 0.0;
+            }
+            return pow(VariableValue, 1.0 / RootOrder);
+        }
         else
-            throw(false);
+            throw std::runtime_error("Invalid argument!");
         return FunctionValueComputation;
     }
 }

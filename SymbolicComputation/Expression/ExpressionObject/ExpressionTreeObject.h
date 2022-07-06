@@ -20,14 +20,15 @@ namespace ExpressionManagement
 
     protected:
     public:
-        void TreeExpressionStorageInputAPI(std::string);
+        void TreeExpressionObjectInputAPI(std::string);
         void OutputExpressionTreeInOrderTraversal();
         void OutputExpressionTreePreOrderTraversal();
         void OutputExpressionTreePostOrderTraversal();
+        TreeExpressionBuildingBlock *OutputExpressionTreeRoot();
     };
     typedef class ExpressionTreeObject ExpressionTreeObject;
 
-    void ExpressionTreeObject::TreeExpressionStorageInputAPI(std::string ExpressionInput)
+    void ExpressionTreeObject::TreeExpressionObjectInputAPI(std::string ExpressionInput)
     {
         this->ExpressionCustomTokenInputAPI(ExpressionInput);
         // this->ExpressionTreeRoot = new TreeExpressionBuildingBlock;
@@ -44,6 +45,10 @@ namespace ExpressionManagement
     void ExpressionTreeObject::OutputExpressionTreePostOrderTraversal()
     {
         PostOrderTraversal(this->ExpressionTreeRoot);
+    }
+    TreeExpressionBuildingBlock *ExpressionTreeObject::OutputExpressionTreeRoot()
+    {
+        return this->ExpressionTreeRoot;
     }
 }
 

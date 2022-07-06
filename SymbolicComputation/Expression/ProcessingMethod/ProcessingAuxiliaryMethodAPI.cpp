@@ -20,5 +20,6 @@
 #include "PriorityOrderCompute.cpp"
 #include "IsValidExpression.cpp"
 #include "GetArgumentName.cpp"
+#include "ComputeBuiltInFunction.cpp"
 
 #endif

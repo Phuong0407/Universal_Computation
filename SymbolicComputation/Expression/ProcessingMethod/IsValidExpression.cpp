@@ -38,7 +38,7 @@ namespace ExpressionManagement
                 continue;
             else if (Checker == '.' || Checker == '^' || Checker == '*' || Checker == '/' || Checker == '+' || Checker == '-')
                 continue;
-            else if (Checker == '_' || Checker == ' ')
+            else if (Checker == '_' || Checker == ' ' || Checker == '(' || Checker == ')')
                 continue;
             else
                 return false;
@@ -47,7 +47,3 @@ namespace ExpressionManagement
     }
 }
 #endif
-// int main()
-// {
-//     std::cout << ExpressionManagement::IsValidExpression("adsadasd adasda");
-// }

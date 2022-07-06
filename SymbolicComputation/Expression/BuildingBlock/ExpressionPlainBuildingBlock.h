@@ -14,10 +14,11 @@
 #include <cmath>
 #include <tuple>
 #include <stack>
+#include <cctype>
 #include <locale>
 #include <vector>
 #include <string>
-#include <cctype>
+#include <cstring>
 #include <ctype.h>
 #include <cstdlib>
 #include <iostream>
@@ -29,6 +30,9 @@
 
 // Custom unit to build plain expression
 typedef std::vector<std::string> CustomTokenUnit;
+
+//  Custom unit to compute expression
+typedef std::pair<std::string, double> ArgumentPairUnit;
 
 // Built-in functions contains absolute value, logarithm, trigonometry functions, hyperbolic functions, square root
 // More built-in functions will be add later
