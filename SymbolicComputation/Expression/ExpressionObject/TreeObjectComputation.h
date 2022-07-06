@@ -1,5 +1,5 @@
 /**
- * @file TreeComputation.h is the
+ * @file TreeObjectComputation.h is the
  * @author Phuong Diep Thanh (diepthanhphuong0407@gmail.com)
  * @brief This file contains a class which will calculate an expression value if we know its arguments values
  * @version 2.0
@@ -17,7 +17,7 @@
 namespace ExpressionManagement
 {
 
-    class TreeComputation : public ExpressionTreeObject
+    class TreeObjectComputation : public ExpressionTreeObject
     {
     private:
         CustomTokenUnit ArgumentNameList;
@@ -32,9 +32,9 @@ namespace ExpressionManagement
         double OutputExpressionValueComputed();
         void TreeComputationInputAPI(std::string, bool, std::vector<ArgumentPairUnit>);
     };
-    typedef class TreeComputation TreeComputation;
+    typedef class TreeObjectComputation TreeObjectComputation;
 
-    void TreeComputation::CreateArgumentName()
+    void TreeObjectComputation::CreateArgumentName()
     {
         std::string ArgumentNameBuilder = "";
         CustomTokenUnit OperandsList = this->OutputExpressionCustomTokenInfix();
@@ -60,7 +60,7 @@ namespace ExpressionManagement
         }
     }
 
-    void TreeComputation::CreateArgumentValueFromKeyBoard()
+    void TreeObjectComputation::CreateArgumentValueFromKeyBoard()
     {
         double ArgumentValueScanner = 0.0;
         std::cout << "Calculate expression " << this->OutputExpressionInitial() << std::endl;
@@ -81,7 +81,7 @@ namespace ExpressionManagement
         }
     }
 
-    void TreeComputation::CreateArgumentValueFromGivenData(std::vector<ArgumentPairUnit> ArgumentValueListInput)
+    void TreeObjectComputation::CreateArgumentValueFromGivenData(std::vector<ArgumentPairUnit> ArgumentValueListInput)
     {
         double ArgumentValueScanner = 0.0;
         if (ArgumentValueListInput.size() != this->ArgumentNameList.size())
@@ -95,7 +95,7 @@ namespace ExpressionManagement
         }
     }
 
-    void TreeComputation::TreeComputationInputAPI(std::string ExpressionStringInput, bool GetDataFromKeyboard, std::vector<ArgumentPairUnit> ArgumentValueListInput)
+    void TreeObjectComputation::TreeComputationInputAPI(std::string ExpressionStringInput, bool GetDataFromKeyboard, std::vector<ArgumentPairUnit> ArgumentValueListInput)
     {
         if (IsValidExpression(ExpressionStringInput) == false)
             throw std::runtime_error("Invalid expression!");
@@ -106,7 +106,7 @@ namespace ExpressionManagement
         else
             this->CreateArgumentValueFromGivenData(ArgumentValueListInput);
     }
-    double TreeComputation::OutputExpressionValueComputed()
+    double TreeObjectComputation::OutputExpressionValueComputed()
     {
         return ComputeExpressionValue(this->OutputExpressionTreeRoot(), this->ArgumentNameList, this->ArgumentValueList);
     }

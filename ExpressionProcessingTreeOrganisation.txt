@@ -19,15 +19,21 @@ Universal_Computation
 				|---IsBalance.cpp
 				|---GetInsideParentheses.cpp
 				|---PriorityOrderCompute.cpp
+				|---IsValidExpression.cpp
+				|---ComputeBuiltInFunction.cpp
+				|---GetArgumentName.cpp
+				|---DecompositionAuxiliaryMethodAPI.cpp
 				|---InfixToPostfix.cpp
 				|---DecompositionToInfix.cpp
-				|---ExpressionTreeConstruction.cpp
-				|---DecompositionAuxiliaryMethodAPI.cpp
+				|---TreeConstruction.cpp
+				|---ProcessMainMethodAPI.cpp
 			|---ExpressionObject
 				|---StringObject.h
 				|---TokenCustomObject.h
 				|---TreeObject.h
+				|---TreeComputation.cpp
 			|---ValueComputation
-				|---ValueComputation.h
-				|---ValueComputation.cpp
+				|---FindValueFromArgumentName.cpp
+				|---IsArgumentExistence.cpp
+				|---TreeExpressionCompute.cpp
 		|---Integral
