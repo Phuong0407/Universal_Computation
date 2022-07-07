@@ -15,54 +15,49 @@
 
 namespace ExpressionManagement
 {
+
     class ExpressionCustomTokenObject
     {
     private:
-        std::string ExpressionInputInitial;
         std::string ExpressionInputNoBlank;
         CustomTokenUnit ExpressionCustomTokenInfix;
         CustomTokenUnit ExpressionCustomTokenPostfix;
+        CustomTokenUnit ArgumentNameList;
 
     protected:
-        void RemoveUnaryOperator();
-        std::string OutputExpressionInitial();
-        std::string OutputExpressionNoBlank();
+        void GetArgumentNameList();
         void ExpressionCustomTokenInputAPI(std::string);
+
+        std::string OutputExpressionNoBlank();
         CustomTokenUnit OutputExpressionCustomTokenInfix();
         CustomTokenUnit OutputExpressionCustomTokenPostfix();
     };
     typedef class ExpressionCustomTokenObject ExpressionCustomTokenObject;
 
-    void ExpressionCustomTokenObject::RemoveUnaryOperator()
+    void ExpressionCustomTokenObject::GetArgumentNameList()
     {
-        if (this->ExpressionInputNoBlank[0] == '+' || this->ExpressionInputNoBlank[0] == '-')
+        std::string ArgumentNameBuilder = "";
+        if (ExpressionCustomTokenInfix.empty() == true)
+            throw std::invalid_argument("Wrong in algorithm or invalid expression!");
+        for (unsigned int i = 0; i < ExpressionCustomTokenInfix.size(); ++i)
         {
-            std::string TempStringInsert = "";
-            TempStringInsert += '0';
-            TempStringInsert += this->ExpressionInputNoBlank;
-            this->ExpressionInputNoBlank.assign(TempStringInsert);
+            if (IsArgument(ExpressionCustomTokenInfix[i]) == true)
+            {
+                ArgumentNameBuilder = ExpressionCustomTokenInfix[i];
+                ArgumentNameList.push_back(ArgumentNameBuilder);
+            }
         }
-        for (unsigned int i = 0; i < this->ExpressionInputNoBlank.length(); ++i)
-            if (this->ExpressionInputNoBlank[i] == '(' && (this->ExpressionInputNoBlank[i + 1] == '+' || this->ExpressionInputNoBlank[i + 1] == '-'))
-                this->ExpressionInputNoBlank.insert(i + 1, "0");
     }
 
     void ExpressionCustomTokenObject::ExpressionCustomTokenInputAPI(std::string ExpressionStringInput)
     {
-        this->ExpressionInputInitial = ExpressionStringInput;
         do
         {
             ExpressionStringInput.erase(remove(ExpressionStringInput.begin(), ExpressionStringInput.end(), ' '), ExpressionStringInput.end());
         } while (ExpressionStringInput.find(' ') == ExpressionStringInput.length());
-        this->ExpressionInputNoBlank = ExpressionStringInput;
-        this->RemoveUnaryOperator();
-        this->ExpressionCustomTokenInfix = DecompositionToInfixCustomToken(this->OutputExpressionNoBlank());
-        this->ExpressionCustomTokenPostfix = InfixToPostfixConversion(this->OutputExpressionCustomTokenInfix());
-    }
-
-    std::string ExpressionCustomTokenObject::OutputExpressionInitial()
-    {
-        return this->ExpressionInputInitial;
+        ExpressionInputNoBlank = RemoveUnaryOperator(ExpressionStringInput);
+        ExpressionCustomTokenInfix = DecompositionToInfixCustomToken(OutputExpressionNoBlank());
+        GetArgumentNameList();
     }
 
     std::string ExpressionCustomTokenObject::OutputExpressionNoBlank()

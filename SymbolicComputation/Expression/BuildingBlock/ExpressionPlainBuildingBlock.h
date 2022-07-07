@@ -34,6 +34,9 @@ typedef std::vector<std::string> CustomTokenUnit;
 //  Custom unit to compute expression
 typedef std::pair<std::string, double> ArgumentPairUnit;
 
+// Custom unit to build input expression
+typedef std::pair<std::string, ExpressionTreeObject> ArgumentInputUnit;
+
 // Built-in functions contains absolute value, logarithm, trigonometry functions, hyperbolic functions, square root
 // More built-in functions will be add later
 std::unordered_set<std::string> BuiltInFunctions{

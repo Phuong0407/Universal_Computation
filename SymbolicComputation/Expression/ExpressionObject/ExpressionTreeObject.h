@@ -57,17 +57,7 @@ namespace ExpressionManagement
             throw std::invalid_argument("Wrong in algorithm or invalid expression!");
         for (unsigned int i = 0; i < OperandsList.size(); ++i)
         {
-            if (IsDigit(OperandsList[i]) == true)
-                continue;
-            else if (IsBuiltInFunctions(OperandsList[i]) == true)
-                continue;
-            else if (IsConstant(OperandsList[i]) == true)
-                continue;
-            else if (IsOperator(OperandsList[i]) == true)
-                continue;
-            else if (OperandsList[i] == "(" || OperandsList[i] == ")")
-                continue;
-            else
+            if (IsArgument(OperandsList[i]) == true)
             {
                 ArgumentNameBuilder = OperandsList[i];
                 ArgumentNameList.push_back(ArgumentNameBuilder);
@@ -77,7 +67,8 @@ namespace ExpressionManagement
 
     void ExpressionTreeObject::CreateArgumentNameTree(BuildExpressionTree *ExpressionTreeRoot)
     {
-        if(ExpressionTreeRoot == NULL) throw 
+        if (ExpressionTreeRoot == NULL)
+            return;
     }
 
     void ExpressionTreeObject::InputArgumentReplacer(std::string ArgumentName, BuildExpressionTree *SubTree)

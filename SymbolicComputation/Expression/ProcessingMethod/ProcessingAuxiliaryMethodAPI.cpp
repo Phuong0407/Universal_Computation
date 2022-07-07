@@ -21,5 +21,6 @@
 #include "IsValidExpression.cpp"
 #include "GetArgumentName.cpp"
 #include "ComputeBuiltInFunction.cpp"
+#include "RemoveUnaryOperator.cpp"
 
 #endif
