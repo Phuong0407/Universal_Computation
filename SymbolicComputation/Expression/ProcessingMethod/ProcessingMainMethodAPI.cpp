@@ -14,5 +14,6 @@
 #include "DecompositionToInfix.cpp"
 #include "InfixToPostfix.cpp"
 #include "TreeConstruction.cpp"
+#include "IsArgument.cpp"
 
 #endif

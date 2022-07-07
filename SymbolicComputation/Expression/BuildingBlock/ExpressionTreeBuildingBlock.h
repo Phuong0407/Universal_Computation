@@ -50,6 +50,17 @@ TreeExpressionBuildingBlock *CloneExpressionTree(TreeExpressionBuildingBlock *Ro
     }
 }
 
+TreeExpressionBuildingBlock *SubTreeReplacement(TreeExpressionBuildingBlock *Root, std::string ArgumentToReplace, TreeExpressionBuildingBlock *SubTree)
+{
+    if (Root == NULL)
+        return NULL;
+    if (Root->Left == NULL && Root->Right == NULL && Root->Data == ArgumentToReplace)
+        Root = SubTree;
+    Root->Left = SubTreeReplacement(Root->Left, ArgumentToReplace, SubTree);
+    Root->Right = SubTreeReplacement(Root->Right, ArgumentToReplace, SubTree);
+    return Root;
+}
+
 /**
  * @brief FindKeyExistence find whether a key exists in give expression tree
  * @param Root is the given expression tree to check

@@ -16,11 +16,9 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsValidExpression is to check if an expression is valid or not
-     * @brief Valid here is just a preprocessor method, we check for characters
-     * @brief and not check for the meaning of the expression
-     * @brief It accepts space in expression
-     * @brief We will add some other special characters such as "!"
+     * @brief IsValidExpression is to check if an expression (accepted spaces) is valid or not
+     * @brief Valid here is just a preprocessor method, we check for characters brief and not check for the meaning of the expression
+     * @brief We will add some other special characters such as "!" later
      * @param ExpressionStringToCheck is the input string to check
      * @return true
      */

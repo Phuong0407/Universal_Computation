@@ -16,23 +16,73 @@ namespace ExpressionManagement
     class ExpressionTreeObject : public ExpressionCustomTokenObject
     {
     private:
+        CustomTokenUnit ArgumentNameList;
         TreeExpressionBuildingBlock *ExpressionTreeRoot = NULL;
 
     protected:
     public:
-        void TreeExpressionObjectInputAPI(std::string);
+        void CreateArgumentName();
+        void CreateArgumentNameTree(TreeExpressionBuildingBlock *);
         void OutputExpressionTreeInOrderTraversal();
         void OutputExpressionTreePreOrderTraversal();
         void OutputExpressionTreePostOrderTraversal();
+        void TreeExpressionObjectInputAPI(std::string);
+        void InputArgumentReplacer(std::string, TreeExpressionBuildingBlock *);
+        CustomTokenUnit OutputArgumentNameList();
         TreeExpressionBuildingBlock *OutputExpressionTreeRoot();
     };
     typedef class ExpressionTreeObject ExpressionTreeObject;
 
+    /**
+     * @brief This function will get string input to create an expression tree,
+     * @brief from that it will create expression tree,
+     * @brief then it will create argument name list
+     * @param ExpressionInput string to get
+     */
     void ExpressionTreeObject::TreeExpressionObjectInputAPI(std::string ExpressionInput)
     {
         this->ExpressionCustomTokenInputAPI(ExpressionInput);
-        // this->ExpressionTreeRoot = new TreeExpressionBuildingBlock;
         this->ExpressionTreeRoot = BuildExpressionTree(this->OutputExpressionCustomTokenPostfix());
+        this->CreateArgumentName();
+    }
+    /**
+     * @brief This function will create a CustomTokenUnit,
+     * @brief It creates and stores argument name to get value later
+     */
+    void ExpressionTreeObject::CreateArgumentName()
+    {
+        std::string ArgumentNameBuilder = "";
+        CustomTokenUnit OperandsList = this->OutputExpressionCustomTokenInfix();
+        if (OperandsList.empty() == true)
+            throw std::invalid_argument("Wrong in algorithm or invalid expression!");
+        for (unsigned int i = 0; i < OperandsList.size(); ++i)
+        {
+            if (IsDigit(OperandsList[i]) == true)
+                continue;
+            else if (IsBuiltInFunctions(OperandsList[i]) == true)
+                continue;
+            else if (IsConstant(OperandsList[i]) == true)
+                continue;
+            else if (IsOperator(OperandsList[i]) == true)
+                continue;
+            else if (OperandsList[i] == "(" || OperandsList[i] == ")")
+                continue;
+            else
+            {
+                ArgumentNameBuilder = OperandsList[i];
+                ArgumentNameList.push_back(ArgumentNameBuilder);
+            }
+        }
+    }
+
+    void ExpressionTreeObject::CreateArgumentNameTree(BuildExpressionTree *ExpressionTreeRoot)
+    {
+        if(ExpressionTreeRoot == NULL) throw 
+    }
+
+    void ExpressionTreeObject::InputArgumentReplacer(std::string ArgumentName, BuildExpressionTree *SubTree)
+    {
+        ExpressionTreeRoot = SubTreeReplacement(ExpressionTreeRoot, ArgumentName, SubTree);
     }
     void ExpressionTreeObject::OutputExpressionTreeInOrderTraversal()
     {
@@ -49,6 +99,10 @@ namespace ExpressionManagement
     TreeExpressionBuildingBlock *ExpressionTreeObject::OutputExpressionTreeRoot()
     {
         return this->ExpressionTreeRoot;
+    }
+    CustomTokenUnit *ExpressionTreeObject::OutputArgumentNameList()
+    {
+        return this->ArgumentNameList;
     }
 }
 
