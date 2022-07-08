@@ -14,7 +14,8 @@
 
 namespace ExpressionManagement
 {
-    typedef std::pair<std::string, ExpressionDecomposition> ArgumentInputUnit;
+    // Data structures to store unit of a subexpression(argument name, argument infix vector, sub argument list)
+    typedef std::tuple<std::string, CustomTokenUnit, CustomTokenUnit> ArgumentSubExpressionInputUnit;
 
     /**
      * @brief This class provides an API:
@@ -25,17 +26,17 @@ namespace ExpressionManagement
     class ExpressionGetInput
     {
     private:
-        CustomTokenUnit MainExpresionInfix;                    // expression without any argument, will be convert later to postfix expression
-        CustomTokenUnit InputArgumentNameTotal;                // stores all argument name (get from outside) to put to main expression, it will be processed to be null
-        ExpressionDecomposition MainExpression;                // storage unit to be expresion that without any changes as initial input
-        std::vector<ArgumentInputUnit> InputSubExpressionPair; // data structure to store a pair of (name, sub expression tree)
+        CustomTokenUnit MainExpresionInfix;                                   // expression without any argument, will be convert later to postfix expression
+        CustomTokenUnit InputArgumentNameTotal;                               // stores all argument name (get from outside) to put to main expression, it will be processed to be null
+        ExpressionDecomposition MainExpression;                               // storage unit to be expresion that without any changes as initial input
+        std::vector<ArgumentSubExpressionInputUnit> InputSubExpressionTriple; // data structure to store a pair of (name, sub expression tree)
 
         void CreateArgumentNameTotal();
         bool IsContainingArgument();
+        ArgumentSubExpressionInputUnit ProcessArgumentSubExpression(std::string, std::string);
 
     public:
         void GetInputMainExpressionAPI(std::string);
-        ArgumentInputUnit GetInputArgumentSubExpression(std::string, std::string);
         CustomTokenUnit OutputMainExpresionInfix();
     };
     typedef class ExpressionGetInput ExpressionGetInput;
@@ -46,15 +47,16 @@ namespace ExpressionManagement
      * @brief then it creates a pair of (name, ExpressionDecomposition object)
      * @param ArgumentName the argument name to get.
      * @param SubExpression the input expression to replace argument name
-     * @return ArgumentInputUnit as a builder for ArgumentInputUnit
+     * @return ArgumentSubExpressionInputUnit as a builder for ArgumentInputUnit
      */
-    ArgumentInputUnit ExpressionGetInput::GetInputArgumentSubExpression(std::string ArgumentName, std::string SubExpression)
+    ArgumentSubExpressionInputUnit ExpressionGetInput::ProcessArgumentSubExpression(std::string ArgumentName, std::string SubExpression)
     {
         ExpressionDecomposition ArgumentInputObject;
+        ArgumentSubExpressionInputUnit InputNameFromKeyBoardBuilder;
         if (IsValidExpression(SubExpression) == false)
             throw std::runtime_error("Invalid expression!");
         ArgumentInputObject.ExpressionDecompositionInputAPI(SubExpression);
-        ArgumentInputUnit InputNameFromKeyBoardBuilder(ArgumentName, ArgumentInputObject);
+        InputNameFromKeyBoardBuilder = std::make_tuple(ArgumentName, ArgumentInputObject.OutputExpressionCustomTokenInfix(), ArgumentInputObject.OutputArgumentNameList());
         return InputNameFromKeyBoardBuilder;
     }
 
@@ -69,15 +71,19 @@ namespace ExpressionManagement
         MainExpression.ExpressionDecompositionInputAPI(ExpressionStringInput);
         MainExpresionInfix = MainExpression.OutputExpressionCustomTokenInfix();
         InputArgumentNameTotal = MainExpression.OutputArgumentNameList();
+        for (unsigned int i = 0; i < InputArgumentNameTotal.size(); ++i)
+            std::cout << InputArgumentNameTotal[i] << std::endl;
         while (InputArgumentNameTotal.empty() != true)
         {
+            std::vector<ArgumentSubExpressionInputUnit> InputSubExpressionTripleBuilder;
             ArgumentStringUnit SubExpressionScanner;
-            for (unsigned int i = 0; i < InputArgumentNameTotal.size(); ++i)
+            for (unsigned int i = 0; i < InputArgumentNameTotal.size(); i++)
             {
                 SubExpressionScanner = GetInputFromKeyBoard(InputArgumentNameTotal[i]);
-                InputSubExpressionPair.push_back(GetInputArgumentSubExpression(SubExpressionScanner.first, SubExpressionScanner.second));
-                VectorReplacer(MainExpresionInfix, InputSubExpressionPair[i].first, InputSubExpressionPair[i].second.OutputExpressionCustomTokenInfix());
+                InputSubExpressionTripleBuilder.push_back(ProcessArgumentSubExpression(SubExpressionScanner.first, SubExpressionScanner.second));
+                VectorReplacer(MainExpresionInfix, std::get<0>(InputSubExpressionTripleBuilder[i]), std::get<1>(InputSubExpressionTripleBuilder[i]));
             }
+            InputSubExpressionTriple = InputSubExpressionTripleBuilder;
             CreateArgumentNameTotal();
         }
         return;
@@ -104,15 +110,14 @@ namespace ExpressionManagement
      */
     void ExpressionGetInput::CreateArgumentNameTotal()
     {
-        CustomTokenUnit InputArgumentBuilder;
-        CustomTokenUnit ArgumentName = MainExpression.OutputArgumentNameList();
-        for (unsigned int i = 0; i < ArgumentName.size(); ++i)
+        CustomTokenUnit InputArgumentBuilder, InputArgumentScanner;
+        for (unsigned int i = 0; i < InputSubExpressionTriple.size(); ++i)
         {
-            CustomTokenUnit SubExpressionArgumentNameList = InputSubExpressionPair[i].second.OutputArgumentNameList();
-            InputArgumentBuilder.insert(InputArgumentBuilder.end(), SubExpressionArgumentNameList.begin(), SubExpressionArgumentNameList.end());
-            InputArgumentNameTotal = InputArgumentBuilder;
+            InputArgumentScanner = std::get<2>(InputSubExpressionTriple[i]);
+            InputArgumentBuilder.insert(InputArgumentBuilder.end(), InputArgumentScanner.begin(), InputArgumentScanner.end());
         }
-        RemoveIdenticalElement(InputArgumentNameTotal);
+        InputArgumentNameTotal = InputArgumentBuilder;
+        InputArgumentNameTotal = RemoveIdenticalElement(InputArgumentNameTotal);
     }
 
     CustomTokenUnit ExpressionGetInput::OutputMainExpresionInfix()

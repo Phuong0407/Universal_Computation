@@ -22,8 +22,6 @@ namespace ExpressionManagement
         CustomTokenUnit ExpressionCustomTokenInfix;
         CustomTokenUnit ArgumentNameList;
 
-        void CreateArgumentNameList();
-
     public:
         void ExpressionDecompositionInputAPI(std::string);
         std::string OutputExpressionNoBlank();
@@ -41,25 +39,8 @@ namespace ExpressionManagement
         if (ExpressionStringInput == this->OutputExpressionNoBlank())
             return;
         ExpressionInputNoBlank = RemoveUnaryOperator(ExpressionStringInput);
-        std::cout << ExpressionInputNoBlank << std::endl;
         ExpressionCustomTokenInfix = DecompositionToInfixCustomToken(this->OutputExpressionNoBlank());
-        CreateArgumentNameList();
-    }
-
-    void ExpressionDecomposition::CreateArgumentNameList()
-    {
-        std::string ArgumentNameBuilder = "";
-        if (ExpressionCustomTokenInfix.empty() == true)
-            throw std::invalid_argument("Wrong in algorithm or invalid expression!");
-        for (unsigned int i = 0; i < ExpressionCustomTokenInfix.size(); ++i)
-        {
-            if (IsArgument(ExpressionCustomTokenInfix[i]) == true)
-            {
-                ArgumentNameBuilder = ExpressionCustomTokenInfix[i];
-                ArgumentNameList.push_back(ArgumentNameBuilder);
-            }
-        }
-        RemoveIdenticalElement(ArgumentNameList);
+        ArgumentNameList = CreateArgumentNameList(ExpressionCustomTokenInfix);
     }
 
     std::string ExpressionDecomposition::OutputExpressionNoBlank()
@@ -74,8 +55,6 @@ namespace ExpressionManagement
 
     CustomTokenUnit ExpressionDecomposition::OutputArgumentNameList()
     {
-        for (unsigned int i = 0; i < ArgumentNameList.size(); ++i)
-            std::cout << ArgumentNameList[i] << std::endl;
         return this->ArgumentNameList;
     }
 }

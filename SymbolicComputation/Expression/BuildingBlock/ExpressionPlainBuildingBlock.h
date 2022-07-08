@@ -30,9 +30,6 @@
 // Custom unit to build plain expression
 typedef std::vector<std::string> CustomTokenUnit;
 
-//  Custom unit to compute expression
-typedef std::pair<std::string, double> ArgumentValueUnit;
-
 // Custom unit for subexpression get method
 typedef std::pair<std::string, std::string> ArgumentStringUnit;
 
@@ -145,7 +142,7 @@ void VectorReplacer(CustomTokenUnit &InfixToReplace, std::string NameToReplace, 
  * @param Input pass by reference
  * @return CustomTokenUnit
  */
-void RemoveIdenticalElement(CustomTokenUnit &Input)
+CustomTokenUnit RemoveIdenticalElement(CustomTokenUnit &Input)
 {
     CustomTokenUnit::iterator Scanner = Input.begin();
     std::unordered_set<std::string> TokenStorageUnit;
@@ -153,5 +150,9 @@ void RemoveIdenticalElement(CustomTokenUnit &Input)
         if (TokenStorageUnit.insert(*CurrentPosition).second)
             *Scanner++ = *CurrentPosition;
     Input.erase(Scanner, Input.end());
+    return Input;
 }
+
+using namespace std;
+
 #endif

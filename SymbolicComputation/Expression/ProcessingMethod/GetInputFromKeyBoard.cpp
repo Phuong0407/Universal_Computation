@@ -23,8 +23,8 @@ namespace ExpressionManagement
     {
         std::string ArgumentNameScanner;
         std::cout << "Enter value for argument " << ArgumentName << " = ";
-        std::cin >> ArgumentNameScanner;
-        ArgumentStringUnit ArgumentNameBuilder(ArgumentName, ArgumentNameScanner);
+        std::getline(std::cin, ArgumentNameScanner);
+        ArgumentStringUnit ArgumentNameBuilder = std::make_pair(ArgumentName, ArgumentNameScanner);
         return ArgumentNameBuilder;
     }
 }
