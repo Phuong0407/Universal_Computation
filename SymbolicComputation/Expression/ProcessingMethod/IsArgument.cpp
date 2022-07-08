@@ -16,14 +16,14 @@ namespace ExpressionManagement
 {
     /**
      * @brief It will check if a string is an argument for expression
-     * @param Checking is the input to check
+     * @param Checking the input to check
      * @return true
      */
     bool IsArgument(std::string Checking)
     {
         if (IsOperator(Checking) == true)
             return false;
-        else if (IsBuiltInFunction(Checking) == true)
+        else if (IsBuiltInFunctions(Checking) == true)
             return false;
         else if (IsConstant(Checking) == true)
             return false;

@@ -16,10 +16,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsValidExpression is to check if an expression (accepted spaces) is valid or not
-     * @brief Valid here is just a preprocessor method, we check for characters brief and not check for the meaning of the expression
-     * @brief We will add some other special characters such as "!" later
-     * @param ExpressionStringToCheck is the input string to check
+     * @brief IsValidExpression is to check if an expression (accepted spaces) is valid or not.
+     * @brief Valid here is just a preprocessor method, we check for characters brief and not check for the meaning of the expression.
+     * @brief We will add some other special characters such as "!" later.
+     * @param ExpressionStringToCheck the input string to check
      * @return true
      */
     bool IsValidExpression(std::string ExpressionStringToCheck)

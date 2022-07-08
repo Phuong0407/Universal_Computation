@@ -22,5 +22,6 @@
 #include "GetArgumentName.cpp"
 #include "ComputeBuiltInFunction.cpp"
 #include "RemoveUnaryOperator.cpp"
+#include "GetInputFromKeyBoard.cpp"
 
 #endif

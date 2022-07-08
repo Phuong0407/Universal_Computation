@@ -26,16 +26,15 @@
 #include <functional>
 #include <unordered_set>
 #include <unordered_map>
-#include <iostream>
 
 // Custom unit to build plain expression
 typedef std::vector<std::string> CustomTokenUnit;
 
 //  Custom unit to compute expression
-typedef std::pair<std::string, double> ArgumentPairUnit;
+typedef std::pair<std::string, double> ArgumentValueUnit;
 
-// Custom unit to build input expression
-typedef std::pair<std::string, ExpressionTreeObject> ArgumentInputUnit;
+// Custom unit for subexpression get method
+typedef std::pair<std::string, std::string> ArgumentStringUnit;
 
 // Built-in functions contains absolute value, logarithm, trigonometry functions, hyperbolic functions, square root
 // More built-in functions will be add later
@@ -116,9 +115,43 @@ std::unordered_map<std::string, double> Constant = {
     {"CharImpVa", 376.7303135},
 };
 
-void VectorAssign(CustomTokenUnit &VectorToAssign, CustomTokenUnit GivenVector)
+/**
+ * @brief VectorReplacer() is the method to replace a unit of an infix vector with another infix vector
+ * @param InfixToReplace the vector to replace a unit,
+ * @param NameToCheck the unit to be replaced
+ * @param InfixReplacer the replacer
+ * @return CustomTokenUnit
+ */
+void VectorReplacer(CustomTokenUnit &InfixToReplace, std::string NameToReplace, CustomTokenUnit InfixReplacer)
 {
-    for (unsigned int i = 0; i < GivenVector.size(); ++i)
-        VectorToAssign.push_back(VectorToAssign[i]);
+    unsigned int Index = 0;
+    do
+    {
+        if (InfixToReplace[Index] == NameToReplace)
+        {
+            InfixToReplace.insert(InfixToReplace.begin() + Index, InfixReplacer.begin(), InfixReplacer.end());
+            Index += InfixReplacer.size();
+            InfixToReplace.erase(InfixToReplace.begin() + Index);
+        }
+        else
+            Index++;
+    } while (Index < InfixToReplace.size());
+}
+
+/**
+ * @brief RemoveIdenticalElement() will remove all the identical unit in an CustomTokenUnit input, and
+ * @brief only works for argument name list.
+ * @brief It keeps only one unit of any unit.
+ * @param Input pass by reference
+ * @return CustomTokenUnit
+ */
+void RemoveIdenticalElement(CustomTokenUnit &Input)
+{
+    CustomTokenUnit::iterator Scanner = Input.begin();
+    std::unordered_set<std::string> TokenStorageUnit;
+    for (auto CurrentPosition = Input.begin(); CurrentPosition != Input.end(); ++CurrentPosition)
+        if (TokenStorageUnit.insert(*CurrentPosition).second)
+            *Scanner++ = *CurrentPosition;
+    Input.erase(Scanner, Input.end());
 }
 #endif

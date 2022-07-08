@@ -1,12 +1,24 @@
-#include "../ExpressionObject/TreeComputation.h"
+
+#include "../ExpressionObject/ExpressionCompleteComputation.h"
+// #include "../ExpressionObject/ExpressionDecomposition.h"
+
 using namespace std;
 using namespace ExpressionManagement;
 
 int main()
 {
-    vector<ArgumentPairUnit> a;
-    string s = "(x^x)/(x+1-e^x)^2";
-    TreeComputation O;
-    O.TreeComputationInputAPI(s, true, a);
-    cout << O.OutputExpressionValueComputed();
+    string s = "log(sin(x-y))";
+    ExpressionCompleteComputation O;
+    O.ExpressionComputationCompleteInputAPI(s);
+    cout << O.ComputeExpression();
 }
+
+// int main()
+// {
+//     string s = "3-log(5*sin(x)-3*cos(4*log(x)-5))";
+//     ExpressionDecomposition O;
+//     O.ExpressionDecompositionInputAPI(s);
+//     CustomTokenUnit a = O.OutputExpressionCustomTokenInfix();
+//     for (unsigned int i = 0; i < a.size(); ++i)
+//         cout << a[i] << endl;
+// }

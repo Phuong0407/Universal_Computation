@@ -15,5 +15,6 @@
 #include "InfixToPostfix.cpp"
 #include "TreeConstruction.cpp"
 #include "IsArgument.cpp"
+#include "TreeExpressionCompute.cpp"
 
 #endif
