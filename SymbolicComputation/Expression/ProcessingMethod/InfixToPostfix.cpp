@@ -50,7 +50,6 @@ namespace ExpressionManagement
             }
             else if (ExpressionCustomTokenScanner == ")")
             {
-                // we will pop all the operands until it gets to the parentheses
                 while (PostfixConversionStack.top() != "(")
                 {
                     PostfixExpressionCustomToken.push_back(PostfixConversionStack.top());
