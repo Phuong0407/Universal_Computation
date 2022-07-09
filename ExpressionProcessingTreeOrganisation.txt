@@ -11,29 +11,31 @@ Universal_Computation
 				|---ExpressionPlainBuildingBlock.h
 				|---ExpressionTreeBuildingBlock.h
 			|---ProcessingMethod
+				|---RemoveUnaryOperator.cpp
 				|---IsDigit.cpp
 				|---IsOperand.cpp
+				|---IsBalance.cpp
+				|---IsArgument.cpp
 				|---IsOperator.cpp
 				|---IsConstant.cpp
+				|---IsValidExpression.cpp
 				|---IsBuiltInFunction.cpp
-				|---IsBalance.cpp
 				|---GetInsideParentheses.cpp
 				|---PriorityOrderCompute.cpp
-				|---IsValidExpression.cpp
-				|---ComputeBuiltInFunction.cpp
+				|---ProcessAuxiliaryMethodAPI.cpp
 				|---GetArgumentName.cpp
-				|---DecompositionAuxiliaryMethodAPI.cpp
+				|---CreateArgumentNameList.cpp
+				|---GetInputFromKeyBoard.cpp
 				|---InfixToPostfix.cpp
 				|---DecompositionToInfix.cpp
 				|---TreeConstruction.cpp
+				|---TreeExpressionCompute.cpp
+				|---ComputeBuiltInFunction.cpp
 				|---ProcessMainMethodAPI.cpp
 			|---ExpressionObject
-				|---StringObject.h
-				|---TokenCustomObject.h
-				|---TreeObject.h
-				|---TreeComputation.cpp
-			|---ValueComputation
-				|---FindValueFromArgumentName.cpp
-				|---IsArgumentExistence.cpp
-				|---TreeExpressionCompute.cpp
+				|---ExpressionDecomposition.h
+				|---ExpressionGetInput.h
+				|---ExpressionConversionToPostfix.h
+				|---ExpressionTree.h
+				|---TreeCompleteComputation.cpp
 		|---Integral
