@@ -15,14 +15,14 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief GetInputFromKeyBoard() is method to get subexpression string from keyboard
+     * @brief Gets subexpression string from keyboard
      * @param ArgumentName string to get subexpression
      * @return ArgumentStringUnit as a pair of (argument name, argument substring)
      */
     ArgumentStringUnit GetInputFromKeyBoard(std::string ArgumentName)
     {
         std::string ArgumentNameScanner;
-        std::cout << "Enter value for argument " << ArgumentName << " = ";
+        std::cout << "     Enter value for argument " << ArgumentName << " = ";
         std::getline(std::cin, ArgumentNameScanner);
         ArgumentStringUnit ArgumentNameBuilder = std::make_pair(ArgumentName, ArgumentNameScanner);
         return ArgumentNameBuilder;

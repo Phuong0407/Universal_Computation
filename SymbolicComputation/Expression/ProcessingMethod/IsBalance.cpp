@@ -15,11 +15,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsBalance methods check whether the string in expression is balance or not
-     * @brief Balance means all the parentheses goes in a pair, that is for example, [(){}[([]{})]] is balance
-     * @brief In this project, we only accept () as parentheses for all mathematical expression
-     * @param InputToCheckBalance is the input to check
-     * @return true
+     * @brief Checks whether the string in expression is balance or not, balance means all the parentheses goes in a pair,
+     * that is for example, [(){}[([]{})]] is balance, only accept () as parentheses for all mathematical expression
+     * @param InputToCheckBalance input to check
+     * @return true if the string is balance
      */
     bool IsBalance(std::string InputToCheckBalance)
     {
@@ -46,12 +45,11 @@ namespace ExpressionManagement
             return false;
     }
 
-    /**
-     * @brief IsBalance methods check whether the string in expression is balance or not
-     * @brief Balance means all the parentheses goes in a pair, that is for example, [(){}[([]{})]] is balance
-     * @brief In this project, we only accept () as parentheses for all mathematical expression
-     * @param InputToCheckBalance is the input to check
-     * @return true
+/**
+     * @brief Checks whether the string in expression is balance or not, balance means all the parentheses goes in a pair,
+     * that is for example, [(){}[([]{})]] is balance, only accept () as parentheses for all mathematical expression
+     * @param InputToCheckBalance input to check
+     * @return true if the string is balance
      */
     bool IsBalance(CustomTokenUnit InputToCheckBalance)
     {

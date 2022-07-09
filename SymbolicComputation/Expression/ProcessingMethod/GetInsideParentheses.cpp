@@ -17,10 +17,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief GetInsideParentheses will take expression inside parentheses
-     * @brief It only accepts the string in the form "(----)----", not all the others
-     * @param Input is the expression to
-     * @return std::string
+     * @brief Gets expression inside parentheses, it only accepts the string in the form "(---)---", not all the others,
+     * Using IsBalance() to check whether the set of parentheses is balance
+     * @param Input expression to get
+     * @return std::string as expression inside parentheses in the form (---)
      */
     std::string GetInsideParentheses(std::string Input)
     {
@@ -40,11 +40,12 @@ namespace ExpressionManagement
         }
         return InsideParenthesesExpressionBuilder;
     }
+
     /**
-     * @brief GetInsideParentheses will take expression inside parentheses
-     * @brief It only accepts the string in the form "(----)----", not all the others
-     * @param Input is the expression to
-     * @return CustomTokenUnit
+     * @brief Gets expression inside parentheses, it only accepts the string in the form "(---)---", not all the others,
+     * Using IsBalance() to check whether the set of parentheses is balance
+     * @param Input expression to get
+     * @return CustomTokenUnit as expression inside parentheses in the form (---)
      */
     CustomTokenUnit GetInsideParentheses(CustomTokenUnit Input)
     {

@@ -14,10 +14,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsOperand checks whether input expression is operand or not
-     * @brief Operands are variables, numbers, constants in version 2.0
-     * @param Checking is input we want to check
-     * @return true
+     * @brief Checks whether input expression is operand or not.
+     * Operands here are variables, numbers, constants in version 2.0.
+     * @param Checking input to check
+     * @return true if input is operand
      */
     bool IsOperand(char Checking)
     {

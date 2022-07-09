@@ -15,8 +15,8 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief It will check if a string is an argument for expression
-     * @param Checking the input to check
+     * @brief Checks if a string is an argument for expression
+     * @param Checking input to check
      * @return true
      */
     bool IsArgument(std::string Checking)

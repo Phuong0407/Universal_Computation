@@ -13,11 +13,11 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsOperator checks whether input expression is operator or not
-     * @brief Operators are '^', '*', '/', '+', '-' in version 2.0
-     * @brief Can add more operators for future development
-     * @param Checking is the input to check
-     * @return true or false
+     * @brief Checks whether input expression is operator or not. 
+     * Operators are '^', '*', '/', '+', '-'. Can add more operators for future development. 
+     * Modify simultaneously with IsOperator.cpp
+     * @param Checking input to check
+     * @return true if char is operator
      */
     bool IsOperator(char Checking)
     {
@@ -36,11 +36,11 @@ namespace ExpressionManagement
     }
 
     /**
-     * @brief IsOperator checks whether input expression is operator or not
-     * @brief Operators are '^', '*', '/', '+', '-' in version 2.0
-     * @brief Can add more operators for future development
-     * @param Checking is the input to check
-     * @return true or false
+     * @brief Checks whether input expression is operator or not. 
+     * Operators are '^', '*', '/', '+', '-'. Can add more operators for future development. 
+     * Modify simultaneously with IsOperator.cpp
+     * @param Checking input to check
+     * @return true if string is operator
      */
     bool IsOperator(std::string Checking)
     {

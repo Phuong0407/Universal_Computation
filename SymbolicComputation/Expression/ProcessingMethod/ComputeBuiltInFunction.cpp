@@ -14,11 +14,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief ComputeBuiltInFunction is the method to calculate a function value at some variable values
-     * @brief We simply show all the built-in functions calculation, with the divide-conquer strategy
-     * @brief We add exception handling for some special cases of undermined, such as divided by 0
-     * @param VariableValue is the variable value that we want to compute
-     * @param BuiltInFunction is a string that serve as in Built-in Function set
+     * @brief Calculates value of built-in function with variable values, 
+     * exception handling for computable domains of functions
+     * @param VariableValue variable value that used to compute
+     * @param BuiltInFunction string that serve as in Built-in function input
      * @return double as function value
      */
     double BuiltInFunctionsComputation(double VariableValue, std::string BuiltInFunction)
@@ -31,13 +30,13 @@ namespace ExpressionManagement
         else if (BuiltInFunction == "log")
         {
             if (VariableValue <= 0.0)
-                throw std::invalid_argument("Out of bound for logarithm base 10!");
+                throw std::runtime_error("Out of bound for logarithm base 10!");
             FunctionValueComputation = log10(VariableValue);
         }
         else if (BuiltInFunction == "ln")
         {
             if (VariableValue <= 0.0)
-                throw std::invalid_argument("Out of bound for natural logarithm!");
+                throw std::runtime_error("Out of bound for natural logarithm!");
             FunctionValueComputation = log(VariableValue);
         }
         else if (BuiltInFunction == "sin")
@@ -51,13 +50,13 @@ namespace ExpressionManagement
         else if (BuiltInFunction == "arcsin")
         {
             if (VariableValue < -1.0 || VariableValue > 1.0)
-                throw std::invalid_argument("Out of bound for arcsin!");
+                throw std::runtime_error("Out of bound for arcsin!");
             FunctionValueComputation = asin(VariableValue);
         }
         else if (BuiltInFunction == "arccos")
         {
             if (VariableValue < -1.0 || VariableValue > 1.0)
-                throw std::invalid_argument("Out of bound for arccos!");
+                throw std::runtime_error("Out of bound for arccos!");
             FunctionValueComputation = acos(VariableValue);
         }
         else if (BuiltInFunction == "arctan")
@@ -65,7 +64,7 @@ namespace ExpressionManagement
         else if (BuiltInFunction == "arccotan")
         {
             if (VariableValue == 0.0)
-                throw std::invalid_argument("Out of bound for arccotan!");
+                throw std::runtime_error("Out of bound for arccotan!");
             FunctionValueComputation = atan(1.0 / VariableValue);
         }
         else if (BuiltInFunction == "sinh")
@@ -78,7 +77,7 @@ namespace ExpressionManagement
         {
             FunctionValueComputation = tanh(VariableValue);
             if (FunctionValueComputation == 0.0)
-                throw std::invalid_argument("Out of bound for cotanh!");
+                throw std::runtime_error("Out of bound for cotanh!");
             FunctionValueComputation = 1.0 / FunctionValueComputation;
         }
         else if (BuiltInFunction == "argsinh")
@@ -86,39 +85,55 @@ namespace ExpressionManagement
         else if (BuiltInFunction == "argcosh")
         {
             if (VariableValue < 1.0)
-                throw std::invalid_argument("Out of bound for argcosh!");
+                throw std::runtime_error("Out of bound for argcosh!");
             FunctionValueComputation = acosh(VariableValue);
         }
         else if (BuiltInFunction == "argtanh")
         {
             if (VariableValue >= 1.0 || VariableValue <= -1.0)
-                throw std::invalid_argument("Out of bound for argtanh!");
+                throw std::runtime_error("Out of bound for argtanh!");
             FunctionValueComputation = atanh(VariableValue);
         }
         else if (BuiltInFunction == "argcoth")
         {
             if (-1.0 <= VariableValue && VariableValue <= 1.0)
-                throw std::invalid_argument("Out of bound for argcoth!");
+                throw std::runtime_error("Out of bound for argcoth!");
             FunctionValueComputation = atanh(1.0 / VariableValue);
         }
         else if (BuiltInFunction == "sqrt")
         {
             if (VariableValue <= 0.0)
-                throw std::invalid_argument("Out of bound for square root!");
+                throw std::runtime_error("Out of bound for square root!");
             FunctionValueComputation = sqrt(VariableValue);
+        }
+        else if(BuiltInFunction.length() >= 4)
+        {
+            std::string CheckingRootFunctionNotation = BuiltInFunction.substr(0, 3);
+            std::string CheckingRootFunctionOrder = BuiltInFunction.substr(3, BuiltInFunction.length());
+            if (CheckingRootFunctionNotation == "log")
+            {
+                double LogBase = stod(CheckingRootFunctionOrder);
+                if(LogBase < 0.0)
+                    throw std::runtime_error("Negative base of logarithm!");
+                return log10(VariableValue)/log10(LogBase);
+            }
         }
         else if (BuiltInFunction.length() >= 5)
         {
+            std::string CheckingRootFunctionNotation = BuiltInFunction.substr(0, 4);
             std::string CheckingRootFunctionOrder = BuiltInFunction.substr(4, BuiltInFunction.length());
             double RootOrder = std::stod(CheckingRootFunctionOrder);
-            if (VariableValue == 0)
+            if(CheckingRootFunctionNotation == "sqrt")
             {
-                if (RootOrder < 0)
-                    throw std::invalid_argument("Root with negative-order of zero!");
-                else
-                    return 0.0;
+                if (VariableValue == 0)
+                {
+                    if (RootOrder < 0)
+                        throw std::runtime_error("Root with negative-order of zero!");
+                    else
+                        return 0.0;
+                }
+                return pow(VariableValue, 1.0 / RootOrder);
             }
-            return pow(VariableValue, 1.0 / RootOrder);
         }
         else
             throw std::runtime_error("Invalid argument!");

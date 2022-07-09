@@ -17,10 +17,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsDigit checks whether a string operand is a real number or not
-     * @brief Please check if a string is an operand or not, or maybe not using
-     * @param InputToCheck is the operand to check
-     * @return true
+     * @brief Checks whether a string operand is a real number or not.
+     * Please check if a string is an operand or not, or maybe not using!
+     * @param InputToCheck operand to check
+     * @return true if it is a number
      */
     bool IsDigit(std::string InputToCheck)
     {

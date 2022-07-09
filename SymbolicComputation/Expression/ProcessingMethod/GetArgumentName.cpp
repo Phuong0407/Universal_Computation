@@ -15,8 +15,7 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief We want to create a list of operands to create list of arguments of expression in computation class
-     * @brief We do not need to check for invalid expression here because we will do in the expression computation class
+     * @brief Using further to creates a list of operands to create list of arguments of expression in computation class, do not use anymore!
      * @return CustomTokenUnit
      */
     CustomTokenUnit GetArgumentName(CustomTokenUnit InfixExpressionInput)

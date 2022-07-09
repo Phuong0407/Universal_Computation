@@ -14,18 +14,9 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief DecompositionToInfixCustomToken method decompose a string expression to infix expression in a custom token unit
-     * @brief Divide the problem to three case operands(variables, numbers and built-in functions), two parentheses, operators
-     * @brief Use recurrence stack to decompose, need to check for overflow to avoid infinity recurrence
-     * @brief Changes make in comparision with 1.0 version
-     * @param PutString to ExpressionUnitBuilder
-     * @param ScannerChar to ExpressionScanner
-     * @param Inside to InsideParenthesesExpression
-     * @param ScannerString to CustomTokenUnitExpressionScanner
-     * @param InputReplacement to ExpressionToDecompose
-     * @param ExpressionDecomposition to InfixDecomposition
-     * @param TempDecomposition to SubExpressionDecomposition
-     * @param InsideDecomposition to InsideParenthesesExpressionTokenUnit
+     * @brief Decomposes a string expression to infix expression in a CustomTokenUnit,
+     * Infix form contains "operands" (variables, numbers and built-in functions), two parentheses '(" and ')', operators (+, -, *, /, ^)
+     * @param InputExpressionToDecompose string to decompose to CustomTokenUnit
      * @return CustomTokenUnit as a infix expression
      */
     CustomTokenUnit DecompositionToInfixCustomToken(std::string InputExpressionToDecompose)

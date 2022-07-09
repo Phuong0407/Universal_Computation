@@ -16,10 +16,9 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief It only removes + and - in the form +3 + 4,
-     * @brief by transform to 0 + 3 + 4, for example
-     * @param InputToRemove the string to remove
-     * @return std::string
+     * @brief Only removes + and - in the form +3 + 4 by transform to 0 + 3 + 4, for example
+     * @param InputToRemove string to remove
+     * @return std::string as removed string expression
      */
     std::string RemoveUnaryOperator(std::string InputToRemove)
     {

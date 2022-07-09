@@ -7,8 +7,10 @@ using namespace ExpressionManagement;
 
 int main()
 {
-    string s = "((sin(y)-cos(y))/(1+y^2))^3-5";
+    string s = "";
+    cout << "Enter expression to compute:"<< endl;
+    std::getline(std::cin, s);
     ExpressionCompleteComputation O;
     O.ExpressionComputationCompleteInputAPI(s);
-    cout << O.ComputeExpression();
+    cout << "     The result is " <<  setprecision(30) << O.ComputeExpression()<<endl;
 }

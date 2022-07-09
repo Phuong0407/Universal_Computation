@@ -19,7 +19,7 @@
 #include "GetInsideParentheses.cpp"
 #include "PriorityOrderCompute.cpp"
 #include "IsValidExpression.cpp"
-#include "GetArgumentName.cpp"
+// #include "GetArgumentName.cpp"
 #include "ComputeBuiltInFunction.cpp"
 #include "RemoveUnaryOperator.cpp"
 #include "GetInputFromKeyBoard.cpp"

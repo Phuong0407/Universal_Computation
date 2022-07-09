@@ -12,11 +12,7 @@ namespace ExpressionManagement
 {
     /**
      * @brief InfixToPostfixConversion is used to convert a expression from infix to postfix
-     * @brief Changes make in comparision with the 1.0 version:
-     * @param ExpressionStack to PostfixConversionStack
-     * @param StringScanner to ExpressionCustomTokenScanner
-     * @param InsideParser to InsideParenthesesExpressionConversion
-     * @param InsideExpression to InsideParenthesesExpressionCustomToken
+     * @param InfixCustomTokenUnitInput is the expression in infix form CustomTokenUnit
      * @return CustomTokenUnit as postfix expression
      */
     CustomTokenUnit InfixToPostfixConversion(CustomTokenUnit InfixCustomTokenUnitInput)

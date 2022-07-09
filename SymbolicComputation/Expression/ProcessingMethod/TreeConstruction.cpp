@@ -18,9 +18,8 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief BuildExpressionTree recursively build expression tree from postfix expression
-     * @brief Inherited all data from ExpressionCustomTokenDecomposition class
-     * @brief We use stack to build, so we need to track for exception
+     * @brief Recursively builds expression tree from postfix expression
+     * Using exception handling to check if construction is fail or not
      */
     TreeExpressionBuildingBlock *BuildExpressionTree(CustomTokenUnit PostfixExpressionCustomTokenUnit)
     {
