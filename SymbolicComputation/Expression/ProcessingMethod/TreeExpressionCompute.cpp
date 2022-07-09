@@ -19,10 +19,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief We use recursive algorithm to calculate
-     * @param ArgumentValueListParameter
-     * @param ExpressionTreeRootInput
-     * @return double
+     * @brief Recursively calculate from an expression tree (without any arguments). 
+     * Using exception handling to tackle with value out of domain of built-in function
+     * @param ExpressionTreeRootInput input to compute
+     * @return double as result
      */
     double ComputeExpressionValue(TreeExpressionBuildingBlock *ExpressionTreeRootInput)
     {

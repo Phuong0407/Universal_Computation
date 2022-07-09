@@ -14,10 +14,10 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsConstant checks whether the input expression is constant or not
-     * @brief We will check by finding from unordered_set in ExpressionBuildingBlock.h
+     * @brief Checks whether the input expression is constant or not.
+     * Checks by finding from unordered_set in ExpressionBuildingBlock.h.
      * @param Input is the input to check
-     * @return true
+     * @return true if constant found
      */
     bool IsConstant(std::string StringToFind)
     {

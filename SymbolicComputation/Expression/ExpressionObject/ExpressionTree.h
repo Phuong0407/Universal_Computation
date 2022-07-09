@@ -13,12 +13,19 @@
 
 namespace ExpressionManagement
 {
+    /**
+     * @brief class ExpressionTree inherit from ExpressionConversionToPostfix,
+     * @brief It will get expression input, and build a tree for further calculation,
+     * @brief contains a tree in TreeExpressionBuildingBlock (defined-data structure)
+     * @brief API: TreeExpressionInputAPI() get input string to build tree.
+     * @brief API: Three kinds of output, printing tree (InOrder, PreOrder, PostOrder) to debug code!
+     * @brief API: OutputExpressionTreeRoot() outputs tree root for further calculation.
+     */
     class ExpressionTree : public ExpressionConversionToPostfix
     {
     private:
         TreeExpressionBuildingBlock *ExpressionTreeRoot = NULL;
 
-    protected:
     public:
         void TreeExpressionInputAPI(std::string);
         void OutputExpressionTreeInOrderTraversal();
@@ -29,28 +36,43 @@ namespace ExpressionManagement
     typedef class ExpressionTree ExpressionTree;
 
     /**
-     * @brief This function will get string input to create an expression tree,
-     * @brief from that it will create expression tree.
-     * @param ExpressionInput string to get
+     * @brief Gets string input to create an expression tree
+     * @param StringExpressionInput string to get
      */
-    void ExpressionTree::TreeExpressionInputAPI(std::string ExpressionInput)
+    void ExpressionTree::TreeExpressionInputAPI(std::string StringExpressionInput)
     {
-        this->ExpressionConversionToPostfixInputAPI(ExpressionInput);
+        this->ExpressionConversionToPostfixInputAPI(StringExpressionInput);
         this->ExpressionTreeRoot = BuildExpressionTree(this->OutputPostfixExpression());
     }
 
+    /**
+     * @brief Outputs tree structure for debugging purposes
+     */
     void ExpressionTree::OutputExpressionTreeInOrderTraversal()
     {
         InOrderTraversal(this->ExpressionTreeRoot);
     }
+
+    /**
+     * @brief Outputs tree structure for debugging purposes
+     */
     void ExpressionTree::OutputExpressionTreePreOrderTraversal()
     {
         PreOrderTraversal(this->ExpressionTreeRoot);
     }
+
+    /**
+     * @brief Outputs tree structure for debugging purposes
+     */
     void ExpressionTree::OutputExpressionTreePostOrderTraversal()
     {
         PostOrderTraversal(this->ExpressionTreeRoot);
     }
+
+    /**
+     * @brief Outputs tree root for further calculation
+     * @return TreeExpressionBuildingBlock* as expression tree
+     */
     TreeExpressionBuildingBlock *ExpressionTree::OutputExpressionTreeRoot()
     {
         return this->ExpressionTreeRoot;

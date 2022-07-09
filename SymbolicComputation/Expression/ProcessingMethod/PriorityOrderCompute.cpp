@@ -15,9 +15,9 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief PriorityOrder gives order for all entities consisting of operators and operands
-     * @brief This will serve for InfixToPostfix method later, can be develop further
-     * @param Checking is the input to calculate rank of the entity
+     * @brief Gives order for all entities consisting of operators and operands. 
+     * Modify simultaneously with IsOperator.cpp
+     * @param Checking input to calculate rank of the entity
      * @return int as its rank
      */
     int PriorityOrder(char Checking)
@@ -32,10 +32,10 @@ namespace ExpressionManagement
             return 0;
     }
 
-    /**
-     * @brief PriorityOrder gives order for all entities consisting of operators and operands
-     * @brief This will serve for InfixToPostfix method later, can be develop further
-     * @param Checking is the input to calculate rank of the entity
+     /**
+     * @brief Gives order for all entities consisting of operators and operands. 
+     * Modify simultaneously with IsOperator.cpp
+     * @param Checking input to calculate rank of the entity
      * @return int as its rank
      */
     int PriorityOrder(std::string Checking)

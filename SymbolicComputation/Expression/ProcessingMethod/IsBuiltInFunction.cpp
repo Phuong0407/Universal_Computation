@@ -15,17 +15,28 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief IsBuiltInFunctions methods helps checking for built-in functions
-     * @brief Checking by finding in the built-in unordered_set in ExpressionBuildingBlock.h
-     * @brief Add method to check for generalized root, for example, sqrt2(3) is square root of 3
-     * @param InputCheckingString is the input to check
-     * @return true
+     * @brief Checks whether input is built-in function or not,
+     * checking by finding in the built-in unordered_set in ExpressionBuildingBlock.h.
+     * Additional check for generalized root and logarithms,
+     * for example, sqrt2(3) is square root of 3 and log2.5(3) is logarithm of base 2.5 of 3.
+     * @param InputCheckingString input to check
+     * @return true if found built-in functions
      */
     bool IsBuiltInFunctions(std::string InputCheckingString)
     {
         if (BuiltInFunctions.find(InputCheckingString) != BuiltInFunctions.end())
             return true;
-        // We check for root function with order different from 2, for example sqrt3(2) is cube root of 2
+        else if(InputCheckingString.length() >= 4)
+        {
+            std::string CheckingRootFunctionNotation = "";
+            std::string CheckingRootFunctionOrder = "";
+            CheckingRootFunctionNotation = InputCheckingString.substr(0, 3);
+            CheckingRootFunctionOrder = InputCheckingString.substr(3, InputCheckingString.length());
+            if (IsDigit(CheckingRootFunctionOrder) == true && CheckingRootFunctionNotation == "log")
+                return true;
+            else
+                return false;
+        }
         else if (InputCheckingString.length() >= 5)
         {
             std::string CheckingRootFunctionNotation = "";

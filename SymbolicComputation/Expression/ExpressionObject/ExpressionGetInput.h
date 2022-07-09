@@ -18,18 +18,15 @@ namespace ExpressionManagement
     typedef std::tuple<std::string, CustomTokenUnit, CustomTokenUnit> ArgumentSubExpressionInputUnit;
 
     /**
-     * @brief This class provides an API:
-     * @brief StringExpressionInput is the expression to compute,
-     * @brief vector of pair (name, sub expression tree) to compute
-     * @brief
+     * @brief API: gets input string, decomposes to infix expression and output postfix expression without any arguments.
      */
     class ExpressionGetInput
     {
     private:
-        CustomTokenUnit MainExpresionInfix;                                   // expression without any argument, will be convert later to postfix expression
-        CustomTokenUnit InputArgumentNameTotal;                               // stores all argument name (get from outside) to put to main expression, it will be processed to be null
         ExpressionDecomposition MainExpression;                               // storage unit to be expresion that without any changes as initial input
-        std::vector<ArgumentSubExpressionInputUnit> InputSubExpressionTriple; // data structure to store a pair of (name, sub expression tree)
+        CustomTokenUnit MainExpresionInfix;                                   // expression without any argument, will be convert later to postfix expression
+        CustomTokenUnit InputArgumentNameTotal;                               // stores all argument name (get from outside) to put to main expression
+        std::vector<ArgumentSubExpressionInputUnit> InputSubExpressionTriple; // stores data for input argument, serving as a unit for recursive input request
 
         void CreateArgumentNameTotal();
         bool IsContainingArgument();
@@ -42,10 +39,8 @@ namespace ExpressionManagement
     typedef class ExpressionGetInput ExpressionGetInput;
 
     /**
-     * @brief GetInputArgumentSubExpression() uses name from initial argument list.
-     * @brief it decomposes this subexpression to infix vector and a sublist of argument name,
-     * @brief then it creates a pair of (name, ExpressionDecomposition object)
-     * @param ArgumentName the argument name to get.
+     * @brief Decomposes subexpression to infix vector and a sublist of argument name
+     * @param ArgumentName the argument name to get
      * @param SubExpression the input expression to replace argument name
      * @return ArgumentSubExpressionInputUnit as a builder for ArgumentInputUnit
      */
@@ -61,9 +56,7 @@ namespace ExpressionManagement
     }
 
     /**
-     * @brief GetInputMainExpressionAPI() is the input API to communicate with class ExpressionGetInput.
-     * @brief first, it initialize main expression (remove space, decomposed and get argument name list).
-     * @brief Second, from argument name list, it gets subexpression from keyboard and processes it as to MainExpression
+     * @brief it initializes main expression, gets subexpression, creates list of sub arguments until getting subexpression without arguments
      * @param ExpressionStringInput the expression to compute
      */
     void ExpressionGetInput::GetInputMainExpressionAPI(std::string ExpressionStringInput)
@@ -71,8 +64,7 @@ namespace ExpressionManagement
         MainExpression.ExpressionDecompositionInputAPI(ExpressionStringInput);
         MainExpresionInfix = MainExpression.OutputExpressionCustomTokenInfix();
         InputArgumentNameTotal = MainExpression.OutputArgumentNameList();
-        for (unsigned int i = 0; i < InputArgumentNameTotal.size(); ++i)
-            std::cout << InputArgumentNameTotal[i] << std::endl;
+        std::cout <<"For expression "<< MainExpression.OutputExpressionNoBlank() <<std::endl;
         while (InputArgumentNameTotal.empty() != true)
         {
             std::vector<ArgumentSubExpressionInputUnit> InputSubExpressionTripleBuilder;
@@ -90,8 +82,8 @@ namespace ExpressionManagement
     }
 
     /**
-     * @brief IsContainingArgument() checks whether InputArgumentNameTotal containing argument or not
-     * @return true
+     * @brief checks whether InputArgumentNameTotal containing argument or not
+     * @return true if InputArgumentNameTotal contains argument(s)
      */
     bool ExpressionGetInput::IsContainingArgument()
     {
@@ -106,7 +98,7 @@ namespace ExpressionManagement
     }
 
     /**
-     * @brief CreateArgumentNameTotal() will create a list of total argument list from input subexpression
+     * @brief Creates a list of total argument list from input subexpression
      */
     void ExpressionGetInput::CreateArgumentNameTotal()
     {
@@ -120,6 +112,9 @@ namespace ExpressionManagement
         InputArgumentNameTotal = RemoveIdenticalElement(InputArgumentNameTotal);
     }
 
+    /**
+     * @return CustomTokenUnit as infix expression without any arguments
+     */
     CustomTokenUnit ExpressionGetInput::OutputMainExpresionInfix()
     {
         return this->MainExpresionInfix;

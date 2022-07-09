@@ -15,6 +15,11 @@
 
 namespace ExpressionManagement
 {
+    /**
+     * @brief Creates a list of argument name, using RemoveIdenticalElement() because only one argument name can exist.
+     * @param InfixExpressionInput infix form of expression in CustomTokenUnit
+     * @return CustomTokenUnit as a list of argument name
+     */
     CustomTokenUnit CreateArgumentNameList(CustomTokenUnit InfixExpressionInput)
     {
         CustomTokenUnit ArgumentNameList;

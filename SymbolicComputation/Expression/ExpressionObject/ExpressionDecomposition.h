@@ -13,14 +13,24 @@
 #include "../BuildingBlock/ExpressionPlainBuildingBlock.h"
 #include "../ProcessingMethod/ProcessingMainMethodAPI.cpp"
 
+/**
+ * @brief Namespace ExpressionManagement contains all manipulations relating to expression processing
+ */
 namespace ExpressionManagement
 {
+    /**
+     * @brief class ExpressionDecomposition is the base class for all symbolic computation
+     * @brief API: ExpressionDecompositionInputAPI() is the input API
+     * @brief API: OutputExpressionCustomTokenInfix() outputs infix expression
+     * @brief API: OutputExpressionNoBlank() outputs expression without space
+     * @brief API: OutputArgumentNameList() outputs argument names list
+     */
     class ExpressionDecomposition
     {
     private:
-        std::string ExpressionInputNoBlank;
-        CustomTokenUnit ExpressionCustomTokenInfix;
-        CustomTokenUnit ArgumentNameList;
+        std::string ExpressionInputNoBlank;          // Main storage unit for expression string
+        CustomTokenUnit ExpressionCustomTokenInfix;  // Main storage unit for infix form of expression 
+        CustomTokenUnit ArgumentNameList;            // Contains all argument names of expression string
 
     public:
         void ExpressionDecompositionInputAPI(std::string);
@@ -30,6 +40,11 @@ namespace ExpressionManagement
     };
     typedef class ExpressionDecomposition ExpressionDecomposition;
 
+    /**
+     * @brief remove space and unary operators, using DecompositionToInfixCustomToken() to decompose expression to CustomTokenUnit,
+     * and creates an argument name list
+     * @param ExpressionStringInput
+     */
     void ExpressionDecomposition::ExpressionDecompositionInputAPI(std::string ExpressionStringInput)
     {
         do
@@ -43,16 +58,28 @@ namespace ExpressionManagement
         ArgumentNameList = CreateArgumentNameList(ExpressionCustomTokenInfix);
     }
 
+    /**
+     * @brief Outputs expression string without any blanks
+     * @return std::string as string expression
+     */
     std::string ExpressionDecomposition::OutputExpressionNoBlank()
     {
         return this->ExpressionInputNoBlank;
     }
 
+    /**
+     * @brief Outputs infix expression in CustomTokenUnit 
+     * @return CustomTokenUnit
+     */
     CustomTokenUnit ExpressionDecomposition::OutputExpressionCustomTokenInfix()
     {
         return this->ExpressionCustomTokenInfix;
     }
 
+    /**
+     * @brief Outputs argument names list
+     * @return CustomTokenUnit 
+     */
     CustomTokenUnit ExpressionDecomposition::OutputArgumentNameList()
     {
         return this->ArgumentNameList;

@@ -32,8 +32,4 @@ Universal_Computation
 				|---TokenCustomObject.h
 				|---TreeObject.h
 				|---TreeComputation.cpp
-			|---ValueComputation
-				|---FindValueFromArgumentName.cpp
-				|---IsArgumentExistence.cpp
-				|---TreeExpressionCompute.cpp
 		|---Integral
