@@ -24,16 +24,16 @@ namespace ExpressionManagement
     TreeExpressionBuildingBlock *BuildExpressionTree(CustomTokenUnit PostfixExpressionCustomTokenUnit)
     {
         std::stack<TreeExpressionBuildingBlock *> ExpressionTreeStack;
-        TreeExpressionBuildingBlock *ExpressionTreeRoot = new TreeExpressionBuildingBlock;
+        TreeExpressionBuildingBlock *ExpressionTreeRoot = NULL;
         TreeExpressionBuildingBlock *LeftSubTreeExpression = new TreeExpressionBuildingBlock;
         TreeExpressionBuildingBlock *RightSubTreeExpression = new TreeExpressionBuildingBlock;
         CustomTokenUnit PostfixExpressionBuildingUnit = PostfixExpressionCustomTokenUnit;
         for (unsigned int i = 0; i < PostfixExpressionBuildingUnit.size(); ++i)
         {
-
+            ExpressionTreeRoot = new TreeExpressionBuildingBlock;
             if (IsOperator(PostfixExpressionBuildingUnit[i]) == true)
             {
-                ExpressionTreeRoot = CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i]);
+                CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i], ExpressionTreeRoot);
                 LeftSubTreeExpression = ExpressionTreeStack.top();
                 ExpressionTreeStack.pop();
                 RightSubTreeExpression = ExpressionTreeStack.top();
@@ -44,7 +44,7 @@ namespace ExpressionManagement
             }
             else if (IsBuiltInFunctions(PostfixExpressionBuildingUnit[i]) == true)
             {
-                ExpressionTreeRoot = CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i]);
+                CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i], ExpressionTreeRoot);
                 RightSubTreeExpression = ExpressionTreeStack.top();
                 ExpressionTreeStack.pop();
                 ExpressionTreeRoot->Right = RightSubTreeExpression;
@@ -52,14 +52,15 @@ namespace ExpressionManagement
             }
             else
             {
-                ExpressionTreeRoot = CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i]);
+                CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i], ExpressionTreeRoot);
                 ExpressionTreeStack.push(ExpressionTreeRoot);
             }
+            delete ExpressionTreeRoot;
         }
         ExpressionTreeRoot = ExpressionTreeStack.top();
         ExpressionTreeStack.pop();
         if (ExpressionTreeStack.empty() == false)
-            throw std::invalid_argument("Stack is not empty after building expression tree, wrong algorithms, please check the file ExpressionTreeConstruction.cpp.");
+            throw std::runtime_error("Stack is not empty after building expression tree, wrong algorithms, please check the file ExpressionTreeConstruction.cpp.");
         return ExpressionTreeRoot;
     }
 }
