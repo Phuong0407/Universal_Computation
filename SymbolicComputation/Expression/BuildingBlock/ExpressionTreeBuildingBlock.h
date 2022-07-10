@@ -24,11 +24,11 @@ struct TreeExpressionBuildingBlock
 typedef TreeExpressionBuildingBlock TreeExpressionBuildingBlock;
 
 // Initialization tree expression building block
-void CreateExpressionTreeBuildingBlock(std::string Data, TreeExpressionBuildingBlock *&TreeNode)
+TreeExpressionBuildingBlock *CreateExpressionTreeBuildingBlock(std::string Data)
 {
-    if (TreeNode == NULL)
-        TreeNode = new TreeExpressionBuildingBlock;
-    TreeNode->Data = Data;
+    TreeExpressionBuildingBlock *ExpressionTreeBuilder = new TreeExpressionBuildingBlock;
+    ExpressionTreeBuilder->Data = Data;
+    return ExpressionTreeBuilder;
 }
 
 /**

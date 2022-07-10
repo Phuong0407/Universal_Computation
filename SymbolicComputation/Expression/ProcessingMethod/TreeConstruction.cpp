@@ -24,16 +24,16 @@ namespace ExpressionManagement
     TreeExpressionBuildingBlock *BuildExpressionTree(CustomTokenUnit PostfixExpressionCustomTokenUnit)
     {
         std::stack<TreeExpressionBuildingBlock *> ExpressionTreeStack;
-        TreeExpressionBuildingBlock *ExpressionTreeRoot = NULL;
+        TreeExpressionBuildingBlock *ExpressionTreeRoot = new TreeExpressionBuildingBlock;
         TreeExpressionBuildingBlock *LeftSubTreeExpression = new TreeExpressionBuildingBlock;
         TreeExpressionBuildingBlock *RightSubTreeExpression = new TreeExpressionBuildingBlock;
         CustomTokenUnit PostfixExpressionBuildingUnit = PostfixExpressionCustomTokenUnit;
         for (unsigned int i = 0; i < PostfixExpressionBuildingUnit.size(); ++i)
         {
-            ExpressionTreeRoot = new TreeExpressionBuildingBlock;
+
             if (IsOperator(PostfixExpressionBuildingUnit[i]) == true)
             {
-                CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i], ExpressionTreeRoot);
+                ExpressionTreeRoot = CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i]);
                 LeftSubTreeExpression = ExpressionTreeStack.top();
                 ExpressionTreeStack.pop();
                 RightSubTreeExpression = ExpressionTreeStack.top();
@@ -44,7 +44,7 @@ namespace ExpressionManagement
             }
             else if (IsBuiltInFunctions(PostfixExpressionBuildingUnit[i]) == true)
             {
-                CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i], ExpressionTreeRoot);
+                ExpressionTreeRoot = CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i]);
                 RightSubTreeExpression = ExpressionTreeStack.top();
                 ExpressionTreeStack.pop();
                 ExpressionTreeRoot->Right = RightSubTreeExpression;
@@ -52,10 +52,9 @@ namespace ExpressionManagement
             }
             else
             {
-                CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i], ExpressionTreeRoot);
+                ExpressionTreeRoot = CreateExpressionTreeBuildingBlock(PostfixExpressionBuildingUnit[i]);
                 ExpressionTreeStack.push(ExpressionTreeRoot);
             }
-            delete ExpressionTreeRoot;
         }
         ExpressionTreeRoot = ExpressionTreeStack.top();
         ExpressionTreeStack.pop();
