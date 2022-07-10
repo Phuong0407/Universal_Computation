@@ -14,7 +14,7 @@
 namespace ExpressionManagement
 {
     /**
-     * @brief Calculates value of built-in function with variable values, 
+     * @brief Calculates value of built-in function with variable values,
      * exception handling for computable domains of functions
      * @param VariableValue variable value that used to compute
      * @param BuiltInFunction string that serve as in Built-in function input
@@ -106,32 +106,32 @@ namespace ExpressionManagement
                 throw std::runtime_error("Out of bound for square root!");
             FunctionValueComputation = sqrt(VariableValue);
         }
-        else if(BuiltInFunction.length() >= 4)
+        else if (BuiltInFunction.length() >= 4)
         {
             std::string CheckingRootFunctionNotation = BuiltInFunction.substr(0, 3);
             std::string CheckingRootFunctionOrder = BuiltInFunction.substr(3, BuiltInFunction.length());
             if (CheckingRootFunctionNotation == "log")
             {
-                double LogBase = stod(CheckingRootFunctionOrder);
-                if(LogBase < 0.0)
+                double LogBase = 0.0;
+                if (IsConstant(CheckingRootFunctionOrder) == true)
+                    LogBase = Constant.at(CheckingRootFunctionOrder);
+                else
+                    LogBase = stod(CheckingRootFunctionOrder);
+                if (LogBase < 0.0)
                     throw std::runtime_error("Negative base of logarithm!");
-                return log10(VariableValue)/log10(LogBase);
+                return log10(VariableValue) / log10(LogBase);
             }
-        }
-        else if (BuiltInFunction.length() >= 5)
-        {
-            std::string CheckingRootFunctionNotation = BuiltInFunction.substr(0, 4);
-            std::string CheckingRootFunctionOrder = BuiltInFunction.substr(4, BuiltInFunction.length());
-            double RootOrder = std::stod(CheckingRootFunctionOrder);
-            if(CheckingRootFunctionNotation == "sqrt")
+            CheckingRootFunctionNotation = BuiltInFunction.substr(0, 4);
+            CheckingRootFunctionOrder = BuiltInFunction.substr(4, BuiltInFunction.length());
+            if (CheckingRootFunctionNotation == "sqrt")
             {
-                if (VariableValue == 0)
-                {
-                    if (RootOrder < 0)
-                        throw std::runtime_error("Root with negative-order of zero!");
-                    else
-                        return 0.0;
-                }
+                double RootOrder = 0.0;
+                if (IsConstant(CheckingRootFunctionOrder) == true)
+                    RootOrder = Constant.at(CheckingRootFunctionOrder);
+                else
+                    RootOrder = stod(CheckingRootFunctionOrder);
+                if (VariableValue == 0.0 && RootOrder <= 0.0)
+                    throw std::runtime_error("Negative base of logarithm!");
                 return pow(VariableValue, 1.0 / RootOrder);
             }
         }

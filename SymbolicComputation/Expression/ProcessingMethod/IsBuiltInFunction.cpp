@@ -26,7 +26,7 @@ namespace ExpressionManagement
     {
         if (BuiltInFunctions.find(InputCheckingString) != BuiltInFunctions.end())
             return true;
-        else if(InputCheckingString.length() >= 4)
+        else if (InputCheckingString.length() >= 4)
         {
             std::string CheckingRootFunctionNotation = "";
             std::string CheckingRootFunctionOrder = "";
@@ -34,22 +34,18 @@ namespace ExpressionManagement
             CheckingRootFunctionOrder = InputCheckingString.substr(3, InputCheckingString.length());
             if (IsDigit(CheckingRootFunctionOrder) == true && CheckingRootFunctionNotation == "log")
                 return true;
-            else
-                return false;
-        }
-        else if (InputCheckingString.length() >= 5)
-        {
-            std::string CheckingRootFunctionNotation = "";
-            std::string CheckingRootFunctionOrder = "";
+            if (IsConstant(CheckingRootFunctionOrder) == true && CheckingRootFunctionNotation == "log")
+                return true;
             CheckingRootFunctionNotation = InputCheckingString.substr(0, 4);
             CheckingRootFunctionOrder = InputCheckingString.substr(4, InputCheckingString.length());
             if (IsDigit(CheckingRootFunctionOrder) == true && CheckingRootFunctionNotation == "sqrt")
                 return true;
+            if (IsConstant(CheckingRootFunctionOrder) == true && CheckingRootFunctionNotation == "sqrt")
+                return true;
             else
                 return false;
         }
-        else
-            return false;
+        return false;
     }
 }
 #endif
