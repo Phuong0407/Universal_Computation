@@ -1,0 +1,3 @@
+2022/07/15 - :
+    - I throw exception here and don't catch, the try catch will be do later after the main stream completed.
+    - I refer to use unwinding stack try catch.

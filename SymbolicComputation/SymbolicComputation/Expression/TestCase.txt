@@ -14,3 +14,5 @@ cos(5-log(log(x-4))) - passed
 log(log(log(log(x)))) - passed
 sin(x)-cos(log(x))-tan(ln(x))+abs(x) - passed
 cos(log(log(log(x-5)*4+3*tanh(x)-abs(c-x)))) - passed
+sinh(e^x-cos(sinh(x-4*e)-sqrt[1.2](2.3))) - passed
+cos[rad](x-4)*sinh(tan(y)+12.213213213)-fineStruct^2+log[pi](a) - passed
