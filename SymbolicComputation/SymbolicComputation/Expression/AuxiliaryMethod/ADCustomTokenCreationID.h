@@ -23,11 +23,11 @@ namespace Expression
         {
             int PointCounter = 0;
             int StringCounter = 0;
-            if (Input[0] == '-' || Input[0] == '+' || isdigit(Input[0]) == true)
+            if (Input[0] == '-' || Input[0] == '+' || isdigit(Input[0]) != 0)
                 StringCounter++;
             for (unsigned int Iterator = 1; Iterator < Input.length(); ++Iterator)
             {
-                if (isdigit(Input[Iterator]) == true)
+                if (isdigit(Input[Iterator]) != 0)
                     StringCounter++;
                 else if (Input[Iterator] == '.')
                 {
@@ -58,7 +58,7 @@ namespace Expression
                 StringCounter++;
             for (unsigned int i = 1; i < Input.length(); ++i)
             {
-                if (isalpha(Input[i]) != 0 || Input[i] == '_' || isdigit(Input[i]) == true)
+                if (isalpha(Input[i]) != 0 || Input[i] == '_' || isdigit(Input[i]) != 0)
                     StringCounter++;
                 else
                     continue;

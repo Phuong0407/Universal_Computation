@@ -13,7 +13,6 @@
 #include <stack>
 #include "../AuxiliaryMethod/APInsideBracketExtraction.h"
 #include "../InfixConversionMethod/StringToInfixConversion.h"
-#include "../StringProcessingMethod/StringPreProcessorAPI.h"
 
 namespace Expression
 {
@@ -87,7 +86,6 @@ namespace Expression
 
         static CustomTokenExpression convertStringToPostfix(std::string Input)
         {
-            Input = ExpressionPreProcessing::preprocessExpressionString(Input);
             CustomTokenExpression InfixExpression = StringToInfixConversion::decomposeStringToInfix(Input);
             InfixExpression = StringToInfixConversion::createCompleteFormInfix(InfixExpression);
             CustomTokenExpression PostfixExpression = convertInfixToPostfix(InfixExpression);

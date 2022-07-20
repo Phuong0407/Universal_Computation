@@ -24,14 +24,14 @@ namespace Expression
         ArgumentName ArgumentNameList;
         TreeNode *TreeRoot = NULL;
 
-        static void DeleteTree(TreeNode *Root)
+        static void deleteTree(TreeNode *Root)
         {
             if (Root == NULL)
                 return;
-            else if (Root->Left != NULL)
-                DeleteTree(Root->Left);
-            else if (Root->Right != NULL)
-                DeleteTree(Root->Right);
+            if (Root->Left != NULL)
+                deleteTree(Root->Left);
+            if (Root->Right != NULL)
+                deleteTree(Root->Right);
             delete Root;
         }
 
@@ -69,7 +69,7 @@ namespace Expression
             std::string InputKeyBoardScanner;
             std::cout << "For variable " << ArgumentNameList << ", enter input:" << std::endl;
             std::getline(std::cin, InputKeyBoardScanner);
-            return ExpressionPreProcessing::preprocessExpressionString(InputKeyBoardScanner);
+            return InputKeyBoardScanner;
         }
 
         static ArgumentName concatenateArgumentName(ArgumentName FirstInput, ArgumentName SecondInput)
@@ -91,6 +91,12 @@ namespace Expression
             return ConcatenatedArgumentName;
         }
 
+        /**
+         * @brief Create value for argument, we process so that input can enter recursively.
+         * This means that, you can enter another expression for input, the process will stop until the arguments do not have any argument.
+         * @param ExpressionArgumentName The list of variable from an expression to get value.
+         * @return ArgumentValueUnit as a list of pair (argument name, argument value)
+         */
         static ArgumentValueUnit createValuedArgument(ArgumentName ExpressionArgumentName)
         {
             ArgumentName InputArgumentName;
@@ -104,6 +110,7 @@ namespace Expression
                 TreeNode *InputExpressionRoot = TreeConstruction::convertStringTreeExpression(InputExpressionScanner);
                 ArgumentName InputSubArgumentName = createArgumentNameList(InputExpressionRoot, RepeatedArgumentChecker);
                 InputArgumentName = concatenateArgumentName(InputArgumentName, InputSubArgumentName);
+                // deleteTree(InputExpressionRoot);
             }
             if (InputArgumentName.empty() != true)
             {
@@ -117,6 +124,7 @@ namespace Expression
                     double SubExpressionValue = TreeComputation::computeTreeExpression(InputExpressionRoot, InputSubExpressionValueMap);
                     ArgumentUnit TempArgumentValue = std::make_pair(ExpressionArgumentName[i], SubExpressionValue);
                     TempInputSubArgumentValue.push_back(TempArgumentValue);
+                    // deleteTree(InputExpressionRoot);
                 }
             }
             else if (InputArgumentName.empty() == true)
@@ -128,6 +136,7 @@ namespace Expression
                     double SubExpressionValue = TreeComputation::computeTreeExpression(SubExpressionRoot, InputSubExpressionValueMap);
                     ArgumentUnit TempArgumentValue = std::make_pair(ExpressionArgumentName[i], SubExpressionValue);
                     TempInputSubArgumentValue.push_back(TempArgumentValue);
+                    // deleteTree(SubExpressionRoot);
                 }
             }
             return TempInputSubArgumentValue;
@@ -137,7 +146,7 @@ namespace Expression
         ~ExpressionObjectStorage()
         {
             if (TreeRoot != NULL)
-                DeleteTree(TreeRoot);
+                deleteTree(TreeRoot);
         }
 
         void ExpressionObjectStorageInputAPI(std::string Input)

@@ -20,6 +20,55 @@ namespace Expression
         static const int NonBuiltInFunctionID = 0;
         static const int BuiltInFunctionBracketRequiredID = 2;
 
+        static int getIndexOfPattern(CustomTokenExpression ExpressionInfix)
+        {
+            int Index = -1;
+            for (std::size_t i = 0; i < ExpressionInfix.size() - 1; ++i)
+            {
+                if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
+                {
+                    Index = i;
+                    break;
+                }
+                else if (ExpressionInfix[i].first == VariableID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
+                {
+                    Index = i;
+                    break;
+                }
+                else if (ExpressionInfix[i].first == ConstantID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
+                {
+                    Index = i;
+                    break;
+                }
+                else if (ExpressionInfix[i].first == NumberID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
+                {
+                    Index = i;
+                    break;
+                }
+                else if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == VariableID)
+                {
+                    Index = i;
+                    break;
+                }
+                else if (ExpressionInfix[i].first == RightRoundBracketID &&( ExpressionInfix[i + 1].first == FunctionID|| ExpressionInfix[i + 1].first == ParaOptFunctionID))
+                {
+                    Index = i;
+                    break;
+                }
+                else if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == NumberID)
+                {
+                    Index = i;
+                    break;
+                }
+                else if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == ConstantID)
+                {
+                    Index = i;
+                    break;
+                }
+            }
+            return Index;
+        }
+
     public:
         static char extractFirstCharacter(std::string &Input, int ReducedStringSize = 0)
         {
@@ -62,6 +111,13 @@ namespace Expression
         {
             char ExpressionScanner;
             CustomTokenExpression InfixExpression;
+            if (ExpressionStringNoBlank.length() == 1)
+            {
+                std::string GeneralOperand = "";
+                ExpressionScanner = extractFirstCharacter(ExpressionStringNoBlank, 1);
+                GeneralOperand += ExpressionScanner;
+                InfixExpression.push_back(CustomTokenUnitIDCreation::createExpressionUnitID(GeneralOperand));
+            }
             while (ExpressionStringNoBlank.length() > 0)
             {
                 ExpressionScanner = extractFirstCharacter(ExpressionStringNoBlank);
@@ -113,28 +169,19 @@ namespace Expression
             return InfixExpression;
         }
 
-        static CustomTokenExpression createCompleteFormInfix(CustomTokenExpression ExpressionInfix)
+        static void insertToFormCompleteInfix(CustomTokenExpression &ExpressionInfix, int Index)
         {
-            std::size_t i = 0;
-            while (i < ExpressionInfix.size())
+            if (Index != -1)
             {
                 CustomToken MulOperatorUnit = CustomTokenUnitIDCreation::createExpressionUnitID("*");
-                if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
-                    ExpressionInfix.insert(ExpressionInfix.begin() + i + 1, MulOperatorUnit);
-                else if (ExpressionInfix[i].first == VariableID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
-                    ExpressionInfix.insert(ExpressionInfix.begin() + i + 1, MulOperatorUnit);
-                else if (ExpressionInfix[i].first == ConstantID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
-                    ExpressionInfix.insert(ExpressionInfix.begin() + i + 1, MulOperatorUnit);
-                else if (ExpressionInfix[i].first == NumberID && ExpressionInfix[i + 1].first == LeftRoundBracketID)
-                    ExpressionInfix.insert(ExpressionInfix.begin() + i + 1, MulOperatorUnit);
-                else if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == VariableID)
-                    ExpressionInfix.insert(ExpressionInfix.begin() + i + 1, MulOperatorUnit);
-                else if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == NumberID)
-                    ExpressionInfix.insert(ExpressionInfix.begin() + i + 1, MulOperatorUnit);
-                else if (ExpressionInfix[i].first == RightRoundBracketID && ExpressionInfix[i + 1].first == ConstantID)
-                    ExpressionInfix.insert(ExpressionInfix.begin() + i + 1, MulOperatorUnit);
-                i++;
+                ExpressionInfix.insert(ExpressionInfix.begin() + Index + 1, MulOperatorUnit);
             }
+        }
+
+        static CustomTokenExpression createCompleteFormInfix(CustomTokenExpression ExpressionInfix)
+        {
+            while (getIndexOfPattern(ExpressionInfix) != -1)
+                insertToFormCompleteInfix(ExpressionInfix, getIndexOfPattern(ExpressionInfix));
             return ExpressionInfix;
         }
     };
