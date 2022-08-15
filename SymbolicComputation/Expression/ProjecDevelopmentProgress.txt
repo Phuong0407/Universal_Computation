@@ -1,0 +1,5 @@
+2022/07/15 - :
+    - I throw exception here and don't catch, the try catch will be do later after the main stream completed.
+    - I refer to use unwinding stack try catch.
+2022/07/24 - :
+    - The algorithm can not recognize whether the '-' and '+' sign is operators or is a part of a number.
